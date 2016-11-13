@@ -1,0 +1,159 @@
+body {
+  background: rgba(31,59,8,1);
+  background: -moz-linear-gradient(45deg, rgba(31,59,8,1) 18%, rgba(31,59,8,1) 48%, rgba(70,97,48,1) 78%, rgba(98,125,77,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(18%, rgba(31,59,8,1)), color-stop(48%, rgba(31,59,8,1)), color-stop(78%, rgba(70,97,48,1)), color-stop(100%, rgba(98,125,77,1)));
+  background: -webkit-linear-gradient(45deg, rgba(31,59,8,1) 18%, rgba(31,59,8,1) 48%, rgba(70,97,48,1) 78%, rgba(98,125,77,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(31,59,8,1) 18%, rgba(31,59,8,1) 48%, rgba(70,97,48,1) 78%, rgba(98,125,77,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(31,59,8,1) 18%, rgba(31,59,8,1) 48%, rgba(70,97,48,1) 78%, rgba(98,125,77,1) 100%);
+  background: linear-gradient(45deg, rgba(31,59,8,1) 18%, rgba(31,59,8,1) 48%, rgba(70,97,48,1) 78%, rgba(98,125,77,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f3b08', endColorstr='#627d4d', GradientType=1 );
+}
+
+
+#derecho{
+  height: 100%;
+  background: white;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=1 );
+}
+
+@media (max-width: 720px) {
+  h1 {
+    font-size: 40px !important;
+  }
+  .listado {
+    font-size: 18px !important;
+  }
+}
+
+.listaadmin{
+  color : red;
+  font-size: 17px;
+}
+
+header {
+  background-image: url("images/fondoh1.jpg");
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+h1{
+  color: orange;
+  font-size: 100px;
+  letter-spacing: 14pt;
+  line-height: 1;
+  text-align: center;
+  text-shadow: -5px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+footer {
+  clear:both;
+  position: relative;
+}
+h5  {
+  text-align: center;
+  font-weight: bold;
+}
+
+.facebookicono {
+  width: 20px;
+  height: 20px;
+}
+
+.fondo{
+  margin-top:5%;
+  height: 500px;
+  background-image: url("images/piso.jpg");
+  background-repeat:repeat;
+}
+
+.navegadora{
+  background: rgba(179,220,237,1);
+  background: -moz-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,1)), color-stop(50%, rgba(41,184,229,1)), color-stop(100%, rgba(188,224,238,1)));
+  background: -webkit-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+  background: -o-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+  background: -ms-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+  background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
+  display: inline-flex;
+  height: 100%;
+  margin-top: 1%;
+}
+
+.listado{
+  margin-top: 20%;
+  color: white;
+  line-height: 200%;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: normal;
+}
+
+.formulario {
+  margin-top: 3%;
+}
+
+label{
+  color: white;
+  font-size: 25px;
+}
+
+.labelAdmin {
+  color: black;
+}
+
+.paquetes{
+  margin-top: 5%;
+}
+
+.package{
+  text-align: center;
+  font-weight: bold;
+  color: orange;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.backformturnos{
+  background-color: rgba(242,246,248,1);
+}
+
+th{
+  padding: 20px;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  text-align: center;
+}
+
+.tablaRest {
+  text-align: center;
+  border-style: double;
+  border-width: thick;
+  font-size: 20px;
+  color: white;
+}
+
+
+
+.quienesSomos {
+  margin-top: 5%;
+  font-size: 20px;
+  text-align: justify;
+}
+
+
+.carousel-inner {
+  text-align: center;
+}
+.carousel .item > img {
+  display: inline-block;
+  width: 640px;
+  height: 351px;
+}
+
+.listadoImagenes {
+  width: 200px;
+  height: 100px;
+  display: inline-flex;
+}
