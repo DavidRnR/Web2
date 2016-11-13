@@ -15,7 +15,8 @@ class PaquetesController
   }
 
   function mostrarPaquetes () {
-    $this->vista->mostrarPaquetes();
+    $paquetes = $this->modelo->getPaquetes();
+    $this->vista->mostrarPaquetes($paquetes);
   }
 
 }

@@ -15,7 +15,6 @@ class TurnosModel extends FranelaModel
     else{
       $sentencia = $this->db->prepare( "select * from turno where fk_paquete=?");
       $sentencia->execute(array($paquete));
-
     }
     $turnos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -67,7 +66,7 @@ class TurnosModel extends FranelaModel
 
   function getidPaquete ($id_turno) {
     $turno = $this->getTurno($id_turno);
-   return $turno['fk_paquete'];
+    return $turno['fk_paquete'];
   }
 }
 ?>

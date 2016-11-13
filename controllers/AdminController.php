@@ -22,12 +22,12 @@ class AdminController
   }
 
   function eliminarPaquete () {
-      if(isset($_POST['paquete'])){
-        $id_paquete = $_POST['paquete'];
-        $paquetes = new PaquetesModel();
-        $paquetes->eliminarPaquete($id_paquete);
-        $this->mostrar();
-      }
+    if(isset($_POST['paquete'])){
+      $id_paquete = $_POST['paquete'];
+      $paquetes = new PaquetesModel();
+      $paquetes->eliminarPaquete($id_paquete);
+      $this->mostrar();
+    }
   }
   function agregarPaquete () {
     if(isset($_POST['nombrePaquete'])&&($_POST['nombrePaquete']!="")){
@@ -39,42 +39,31 @@ class AdminController
     }
   }
 
-function listarTodosTurnos(){
-  $paquete=0;
-  $turnos= $this->modelo->getTurnos($paquete);
-  $this->vista->listarTurnos($turnos);
-}
   function listarTurnos(){
     if(isset($_POST['paquete'])) {
       $paquete =  $_POST['paquete'];
     }
     else {
-      $key = $_GET['id_turno'];
-      $paquete = $this->modelo->getidPaquete($key);
+      $paquete = $_GET['paqueteSel'];
     }
     $turnos= $this->modelo->getTurnos($paquete);
     $this->vista->listarTurnos($turnos);
   }
 
-  function listarTurnosdespuesEliminar($paquete){
-    $turnos= $this->modelo->getTurnos($paquete);
-    $this->vista->listarTurnos($turnos);
-  }
-
   function eliminarTurno(){
-    $key = $_GET['id_turno'];
-    $paquete = $this->modelo->getidPaquete($key);
-    $this->modelo->eliminarTurno($key);
-    $this->listarTurnosdespuesEliminar($paquete);
+    $id_turno = $_GET['id_turno'];
+    $paquete = $this->modelo->getidPaquete($id_turno);
+    $this->modelo->eliminarTurno($id_turno);
+    $this->listarTurnos();
   }
 
-  function finalizarTurno(){
-    $key = $_GET['id_turno'];
-    $this->modelo->toogleTurno($key);
+  function finalizarTurno(){;
+    $id_turno = $_GET['id_turno'];
+    $this->modelo->toogleTurno($id_turno);
     $this->listarTurnos();
   }
 
 }
 
 
- ?>
+?>

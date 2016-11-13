@@ -35,9 +35,6 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_LISTAR_TURNOS:
   $adminController->listarTurnos();
   break;
-  case ConfigApp::  $ACTION_LISTAR_TODOS_TURNOS:
-  $adminController->listarTodosTurnos();
-  break;
   case ConfigApp::$ACTION_GUARDAR_TURNO:
   $turnosController->guardarTurno();
   break;

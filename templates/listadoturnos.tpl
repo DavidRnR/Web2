@@ -14,7 +14,7 @@
         {if $turno['finalizado']==0}
         <button class="btn btn-success turnoFinalizado" type="button" data-idturno="{$turno['id_turno']}">Finalizar Turno</button>
         {else}
-        <button class="btn btn-danger eliminarTurnos" type="button" data-idturno="{$turno['id_turno']}">Eliminar Turno</button>
+        <button class="btn btn-danger eliminarTurno" type="button" data-idturno="{$turno['id_turno']}">Eliminar Turno</button>
         {/if}
       </ul>
     </li>

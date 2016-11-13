@@ -11,7 +11,6 @@ class ConfigApp{
   public static $ACTION_ELIMINAR_PAQUETE = 'eliminar_paquete';
   public static $ACTION_ELIMINAR_TURNO = 'eliminar_turno';
   public static $ACTION_FINALIZAR_TURNO = 'finalizar_turno';
-  public static $ACTION_LISTAR_TODOS_TURNOS = 'listar_todos_turnos';
   public static $ACTION_LISTAR_TURNOS = 'listar_turnos';
 
 

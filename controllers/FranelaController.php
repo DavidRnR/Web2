@@ -11,10 +11,9 @@ class FranelaController
   }
 
   function iniciar () {
-
     $this->vista->mostrar();
   }
 
 }
 
- ?>
+?>

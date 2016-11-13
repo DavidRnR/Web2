@@ -52,90 +52,41 @@ $(document).ready(function(){
     getInfo(link);
   }
 
-  $(document).on("click",'.eliminarTurnos', function(){
+  $(document).on("click",'.eliminarTurno', function(){
     event.preventDefault();
-    $.get( "index.php?action=eliminar_turno",{ id_turno: $(this).attr("data-idturno") }, function(data) {
+    var dropdown = $('#dropdownPaquete option:selected').val();
+    $.get( "index.php?action=eliminar_turno",{id_turno: $(this).attr("data-idturno"), paqueteSel: dropdown}, function(data) {
       $('#contenedorTurnos').html(data);
     });
   });
 
   $(document).on("click",'.turnoFinalizado', function(){
     event.preventDefault();
-    $.get( "index.php?action=finalizar_turno&id_turno="+$(this).attr("data-idturno"), function(data) {
+    var dropdown = $('#dropdownPaquete option:selected').val();
+    $.get( "index.php?action=finalizar_turno&id_turno="+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
       $('#contenedorTurnos').html(data);
     });
   });
 
-  $(document).on("click",'#listarTodo', function(){
-    event.preventDefault();
-    $.get( "index.php?action=listar_todos_turnos", function(data) {
-      $('#contenedorTurnos').html(data);
-    });
-  });
-
-$(document).on('submit','#solicitarTurno',function () {
+$(document).on('submit','.ajaxForm',function () {
   event.preventDefault();
+  var dir = $(this).attr("href");
   formData = new FormData(this);
   $.ajax({
     method: "POST",
-    url: "index.php?action=guardar_turno",
+    url: dir,
     data: formData,
     contentType: false,
     cache: false,
     processData: false,
     success: function(data) {
-      $("#cargadorAjax").html(data);
-
-    }
-  });
-});
-
-$(document).on('submit','#listarTurnos',function () {
-  event.preventDefault();
-  formData = new FormData(this);
-  $.ajax({
-    method: "POST",
-    url: "index.php?action=listar_turnos",
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(data) {
-      $("#contenedorTurnos").html(data);
-
-    }
-  });
-});
-
-$(document).on('submit','#eliminarPaquete',function () {
-  event.preventDefault();
-  formData = new FormData(this);
-  $.ajax({
-    method: "POST",
-    url: "index.php?action=eliminar_paquete",
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(data) {
-      $("#cargadorAjax").html(data);
-    }
-  });
-});
-
-$(document).on('submit','#agregarPaquete',function () {
-  event.preventDefault();
-  formData = new FormData(this);
-  $.ajax({
-    method: "POST",
-    url: "index.php?action=agregar_paquete",
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(data) {
-      $("#cargadorAjax").html(data);
-
+      switch (dir) {
+        case "index.php?action=listar_turnos":
+            $("#contenedorTurnos").html(data);
+          break;
+        default:
+        $("#cargadorAjax").html(data);
+      }
     }
   });
 });

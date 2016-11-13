@@ -1,48 +1,16 @@
 <div class="row paquetes">
+  {foreach from=$paquetes key=index item=$paquete}
   <div class="col-md-4">
     <div class="panel panel-primary">
       <div class="panel-body">
-        <h3>Pack BASICO</h3>
+        <h3>{$paquete['paquete']}</h3>
       </div>
       <div class="panel-footer">
-        <p>1 Servicio semanal<br>
-          Sin insumos<br>
-          299 $<br>
-          <hr>
-        </p>
+        <p>{$paquete['detalle_pack']}</p>
       </div>
     </div>
   </div>
-
-  <div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <h3>Pack MEDIUM</h3>
-      </div>
-      <div class="panel-footer">
-        <p>2 Servicio semanal<br>
-          Sin insumos<br>
-          459 $<br>
-          <hr>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <h3>Pack FULL</h3>
-      </div>
-      <div class="panel-footer">
-        <p>3 Servicio semanal<br>
-          Con insumos<br>
-          800 $<br>
-          <hr>
-        </p>
-      </div>
-    </div>
-  </div>
+  {/foreach}
 </div>
 
 <div class="row backformturnos">
@@ -50,7 +18,7 @@
 </div>
 
 <div class="row backformturnos">
-  <form class="" id="solicitarTurno" method="post" enctype="multipart/form-data">
+  <form class="ajaxForm" href="index.php?action=guardar_turno" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col-md-2 col-md-offset-1">
         <input type="text" name="cliente" value="" placeholder="Ingrese su nombre" required>
@@ -64,9 +32,9 @@
       </div>
       <div class="col-md-2">
         <select name="paquete">
-          <option value="3" selected="selected">BASICO</option>
-          <option value="2">MEDIUM</option>
-          <option value="1">FULL</option>
+          {foreach from=$paquetes key=index item=$paquete}
+          <option value="{$paquete['id_paquete']}">{$paquete['paquete']}</option>
+          {/foreach}
         </select>
       </div>
       <div class="col-md-2">

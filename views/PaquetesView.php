@@ -11,8 +11,9 @@ class PaquetesView
     $this->smarty = new Smarty();
 
   }
-  
-  function mostrarPaquetes () {
+
+  function mostrarPaquetes ($paquetes) {
+    $this->smarty->assign('paquetes',$paquetes);
     $this->smarty->display('paquetes.tpl');
   }
 }
