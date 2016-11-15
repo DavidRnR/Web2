@@ -1,12 +1,7 @@
-
 <?php
-
 require_once('FranelaModel.php');
 
-
-
-class ComentarioModel extends FranelaModel
-{
+class ComentariosModel extends FranelaModel {
 
   function getComentarios () {
     $sentencia = $this->db->prepare( "select * from comentario");
