@@ -44,11 +44,19 @@ $(document).ready(function(){
     getInfo(link);
   }
 
+  $(document).on("click",'#login', getLinkLogin);
+
+  function getLinkLogin(event){
+    event.preventDefault();
+    var link = "index.php?action=mostrar_login";
+    getInfo(link);
+  }
+
   $(document).on("click",'#admin', getLinkAdmin);
 
   function getLinkAdmin(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_login";
+    var link = "index.php?action=check_permiso";
     getInfo(link);
   }
 

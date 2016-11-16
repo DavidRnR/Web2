@@ -12,6 +12,7 @@
                 <li role="presentation"><a href=# id="presupuesto">Presupuesto</a></li>
                 <li role="presentation"><a href=# id="contacto">Contacto</a></li>
                 <li role="presentation"><a href=# id="somos">Quienes Somos</a></li>
+                <li role="presentation"><a href=# id="login">Ingresar</a></li>
                 <li role="presentation"><a href=# id="admin">Administración</a></li>
               </ul>
             </nav>

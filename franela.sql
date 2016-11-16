@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2016 a las 02:00:29
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Tiempo de generación: 16-11-2016 a las 06:09:47
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.5.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -115,6 +115,14 @@ CREATE TABLE `rol` (
   `nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `rol`
+--
+
+INSERT INTO `rol` (`id_rol`, `nombre`) VALUES
+(1, 'admin'),
+(2, 'usuario');
+
 -- --------------------------------------------------------
 
 --
@@ -128,13 +136,6 @@ CREATE TABLE `turno` (
   `fk_paquete` int(11) NOT NULL,
   `finalizado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `turno`
---
-
-INSERT INTO `turno` (`id_turno`, `cliente`, `turno`, `fk_paquete`, `finalizado`) VALUES
-(14, 'sasaas', 'Mañana', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -209,7 +210,7 @@ ALTER TABLE `paquete`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `turno`
 --

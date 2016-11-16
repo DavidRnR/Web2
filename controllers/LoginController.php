@@ -19,23 +19,23 @@ class LoginController
   }
 
   public function login(){
-    if(!isset($_REQUEST['txtUser']))
-      $this->vista->mostrar([]);
+    if(!isset($_REQUEST['usuario']))
+    $this->vista->mostrar([]);
     else {
-      $user = $_REQUEST['txtUser'];
-      $pass = $_REQUEST['txtPass'];
+      $user = $_REQUEST['usuario'];
+      $pass = $_REQUEST['password'];
       $hash = $this->modelo->getUser($user)["password"];
       //TODO: falta controlar el caso de que el usuario no exista
       if(password_verify($pass, $hash))
       {
         session_start();
         $_SESSION['USER'] = $user;
-        header("Location: mostrar_tareas");
+        header("Location: index.php");
         die();
       }
       else
       {
-            $this->vista->mostrar(["BAD"]);
+        $this->vista->mostrar(["BAD"]);
       }
 
     }
@@ -46,9 +46,21 @@ class LoginController
     if(!isset($_SESSION['USER'])){
       header("Location: index.php");
       die();
-    };
+    }
   }
 
+  public function checkPermiso () {
+    $user = $this->modelo->getUser("");
+    switch ($user['fk_rol']) {
+      case 0:
+      $adminController = new AdminController($this);
+      $adminController->mostrar();
+      break;
+      default:
+      return -1;
+      break;
+    }
+  }
   public function logout(){
     session_start();
     session_destroy();
@@ -58,4 +70,4 @@ class LoginController
 
 }
 
- ?>
+?>

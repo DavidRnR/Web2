@@ -3,7 +3,6 @@
 require_once ('views/AdminView.php');
 require_once ('models/TurnosModel.php');
 require_once ('models/PaquetesModel.php');
-require_once('controllers/LoginController.php');
 
 
 class AdminController
@@ -19,12 +18,8 @@ class AdminController
   }
 
   function mostrar () {
-    $paquetes = new PaquetesModel();
-    $this->vista->mostrar($paquetes->getPaquetes());
-  }
-
-  function mostrarLogin () {
-    $this->vista->mostrarLogin();
+      $paquetes = new PaquetesModel();
+      $this->vista->mostrar($paquetes->getPaquetes());
   }
 
   function eliminarPaquete () {

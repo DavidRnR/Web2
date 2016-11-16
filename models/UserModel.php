@@ -1,4 +1,5 @@
 <?php
+require_once('models/FranelaModel.php');
 
 class UserModel extends FranelaModel
 {
