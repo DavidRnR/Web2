@@ -9,6 +9,11 @@ class UserModel extends FranelaModel
     $sentencia->execute(array($user));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
-}
 
+  function getUserPorComentario($id){
+    $sentencia = $this->db->prepare("select * from usuario where id_usuario=?");
+    $sentencia->execute(array($id));
+    return $sentencia->fetch(PDO::FETCH_ASSOC);
+  }
+}
 ?>

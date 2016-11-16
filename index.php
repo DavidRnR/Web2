@@ -14,7 +14,7 @@ $contactoController = new ContactoController();
 $turnosController = new TurnosController();
 $paquetesController = new PaquetesController();
 $loginController = new LoginController();
-  
+
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
   $franelaController->iniciar();
@@ -53,6 +53,9 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   break;
   case ConfigApp::$ACTION_MOSTRAR_PAQUETE:
   $paquetesController->mostrarPaquetes();
+  break;
+  case ConfigApp::$ACTION_MOSTRAR_COMENTARIO:
+  $paquetesController->mostrarComentario();
   break;
   case ConfigApp::$ACTION_AGREGAR_PAQUETE:
   $adminController = new AdminController($loginController);

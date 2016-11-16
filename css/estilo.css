@@ -115,6 +115,9 @@ label{
   margin-top: 5%;
 }
 
+.imagenInput {
+  color: transparent;
+}
 .package{
   text-align: center;
   font-weight: bold;

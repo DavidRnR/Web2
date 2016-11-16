@@ -76,6 +76,13 @@ $(document).ready(function(){
     });
   });
 
+  $(document).on("click",'.packComentario', function(){
+    event.preventDefault();
+    $.get( "index.php?action=paquete_comentario",{id_paquete: $(this).attr("data-idpaquete")}, function(data) {
+      $('#cargadorAjax').html(data);
+    });
+  });
+
   $(document).on("click",'.turnoFinalizado', function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();
