@@ -60,6 +60,14 @@ $(document).ready(function(){
     getInfo(link);
   }
 
+  $(document).on("click",'#logout', getLinkLogout);
+
+  function getLinkLogout(event){
+    event.preventDefault();
+    var link = "index.php?action=logout_login";
+    getInfo(link);
+  }
+
   $(document).on("click",'.eliminarTurno', function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();

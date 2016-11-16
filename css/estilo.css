@@ -54,6 +54,14 @@ h5  {
   font-weight: bold;
 }
 
+h6 {
+  color: grey;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
 .facebookicono {
   width: 20px;
   height: 20px;
@@ -117,7 +125,8 @@ label{
 }
 
 .backformturnos{
-  background-color: rgba(242,246,248,1);
+  margin-top: 5%;
+  background-color: white;
 }
 
 th{

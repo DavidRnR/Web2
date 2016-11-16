@@ -14,7 +14,7 @@ $contactoController = new ContactoController();
 $turnosController = new TurnosController();
 $paquetesController = new PaquetesController();
 $loginController = new LoginController();
-
+  
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
   $franelaController->iniciar();
@@ -33,6 +33,9 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   break;
   case ConfigApp::$ACTION_LOGIN_ADMIN:
   $loginController->login();
+  break;
+  case ConfigApp::$ACTION_LOGOUT:
+  $loginController->logout();
   break;
   case ConfigApp::$ACTION_CHECK_PERMISO:
   $loginController->checkPermiso();

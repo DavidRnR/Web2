@@ -1,6 +1,6 @@
 
   <div class="col-4-md">
-    <label class="labelAdmin">Listar Turnos por Pack</label>
+    <label class="labelAdmin"><h6>Listar Turnos por Pack</h6></label>
     <form class="ajaxForm" id="dropdownPaquete" href="index.php?action=listar_turnos" method="post" enctype="multipart/form-data">
       <select name="paquete">
         {foreach from=$paquetes key=index item=$paquete}
@@ -13,7 +13,7 @@
   </div>
 
   <div class="col-4-md">
-    <label class="labelAdmin">Eliminar Pack</label>
+    <label class="labelAdmin"><h6>Eliminar Pack</h6></label>
     <form class="ajaxForm" href="index.php?action=eliminar_paquete" method="post" enctype="multipart/form-data">
       <select name="paquete">
         {foreach from=$paquetes key=index item=$paquete}
@@ -25,7 +25,7 @@
   </div>
 
   <div class="col-4-md">
-    <label class="labelAdmin">Agregar Pack</label>
+    <label class="labelAdmin"><h6>Agregar Pack</h6></label>
     <form class="ajaxForm" href="index.php?action=agregar_paquete" method="post" enctype="multipart/form-data">
       <input type="text" name="nombrePaquete" placeholder="Nombre del Pack" value="">
       <input type="text" name="detallePaquete" placeholder="Detalles del Pack" value="">

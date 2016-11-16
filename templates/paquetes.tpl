@@ -1,3 +1,7 @@
+<div class="row backformturnos">
+  <h2 class="package" >Solicite el Pack acorde a sus necesidades <span class="label label-default">New</span></h2>
+</div>
+
 <div class="row paquetes">
   {foreach from=$paquetes key=index item=$paquete}
   <div class="col-md-4">
@@ -13,9 +17,7 @@
   {/foreach}
 </div>
 
-<div class="row backformturnos">
-  <h2 class="package" >Solicite el Pack acorde a sus necesidades <span class="label label-default">New</span></h2>
-</div>
+
 
 <div class="row backformturnos">
   <form class="ajaxForm" href="index.php?action=guardar_turno" method="post" enctype="multipart/form-data">
