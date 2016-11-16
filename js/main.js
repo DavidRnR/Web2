@@ -48,7 +48,7 @@ $(document).ready(function(){
 
   function getLinkAdmin(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_admin";
+    var link = "index.php?action=mostrar_login";
     getInfo(link);
   }
 

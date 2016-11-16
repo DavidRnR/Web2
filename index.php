@@ -4,6 +4,7 @@ require('controllers/PresupuestoController.php');
 require('controllers/ContactoController.php');
 require('controllers/TurnosController.php');
 require('controllers/AdminController.php');
+require('controllers/LoginController.php');
 require('controllers/PaquetesController.php');
 require('config/ConfigApp.php');
 
@@ -13,6 +14,8 @@ $contactoController = new ContactoController();
 $turnosController = new TurnosController();
 $paquetesController = new PaquetesController();
 $adminController = new AdminController();
+$loginController = new LoginController();
+
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
   $franelaController->iniciar();
@@ -29,8 +32,11 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_MOSTRAR_CONTACTO:
   $contactoController->mostrar();
   break;
+  case ConfigApp::$ACTION_LOGIN_ADMIN:
+  $loginController->login();
+  break;
   case ConfigApp::$ACTION_MOSTRAR_ADMIN:
-  $adminController->mostrar();
+  $adminController->mostrar($loginController);
   break;
   case ConfigApp::$ACTION_LISTAR_TURNOS:
   $adminController->listarTurnos();

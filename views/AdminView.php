@@ -17,10 +17,16 @@ private $smarty;
     $this->smarty->display('listadoturnos.tpl');
   }
 
+  function mostrarLogin(){
+    $this->smarty->display('login.tpl');
+  }
+
   function mostrar($paquetes){
     $this->smarty->assign('paquetes',$paquetes);
     $this->smarty->display('administracion.tpl');
   }
+
+
 }
 
 

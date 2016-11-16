@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2016 a las 21:30:28
+-- Tiempo de generación: 16-11-2016 a las 02:00:29
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 7.0.9
 
@@ -145,8 +145,16 @@ INSERT INTO `turno` (`id_turno`, `cliente`, `turno`, `fk_paquete`, `finalizado`)
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `email` text NOT NULL,
+  `password` varchar(200) NOT NULL,
   `fk_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `fk_rol`) VALUES
+(1, 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 0);
 
 --
 -- Índices para tablas volcadas
@@ -211,7 +219,7 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
