@@ -12,4 +12,5 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
+  <strong>No tienes una cuenta?</strong><button type="button" name="button" id="registro">Registrarse</button>
 </div>

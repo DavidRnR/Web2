@@ -34,6 +34,12 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_LOGIN_ADMIN:
   $loginController->login();
   break;
+  case ConfigApp::$ACTION_MOSTRAR_REGISTRO:
+  $loginController->mostrarRegistro();
+  break;
+  case ConfigApp::$ACTION_NUEVO_USUARIO:
+  $loginController->nuevoUsuario();
+  break;
   case ConfigApp::$ACTION_LOGOUT:
   $loginController->logout();
   break;

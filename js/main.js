@@ -52,11 +52,19 @@ $(document).ready(function(){
     getInfo(link);
   }
 
+  $(document).on("click",'#registro', getLinkRegistro);
+
+  function getLinkRegistro(event){
+    event.preventDefault();
+    var link = "index.php?action=mostrar_registro";
+    getInfo(link);
+  }
+
   $(document).on("click",'#admin', getLinkAdmin);
 
   function getLinkAdmin(event){
     event.preventDefault();
-    var link = "index.php?action=check_permiso";
+    var link = "index.php?action=mostrar_admin";
     getInfo(link);
   }
 

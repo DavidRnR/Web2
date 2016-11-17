@@ -14,7 +14,7 @@ class AdminController
   {
     $this->vista = new AdminView();
     $this->modelo = new TurnosModel();
-    $loginController->checkLogin();
+    $loginController->checkRol(1);
   }
 
   function mostrar () {

@@ -6,6 +6,8 @@ class ConfigApp{
   public static $ACTION_MOSTRAR_CONTACTO = 'mostrar_contacto';
   public static $ACTION_MOSTRAR_ADMIN = 'mostrar_admin';
   public static $ACTION_LOGIN_ADMIN = 'mostrar_login';
+  public static $ACTION_MOSTRAR_REGISTRO = 'mostrar_registro';
+  public static $ACTION_NUEVO_USUARIO = 'nuevo_usuario';
   public static $ACTION_LOGOUT = 'logout_login';
   public static $ACTION_CHECK_PERMISO = 'check_permiso';
   public static $ACTION_GUARDAR_TURNO = 'guardar_turno';

@@ -1,7 +1,6 @@
 <?php
 require_once('views/LoginView.php');
 require_once('models/UserModel.php');
-require_once('controllers/AdminController.php');
 
 class LoginController
 {
@@ -12,10 +11,6 @@ class LoginController
   {
     $this->modelo = new UserModel();
     $this->vista = new LoginView();
-  }
-
-  public function validar(){
-
   }
 
   public function login(){
@@ -41,6 +36,13 @@ class LoginController
     }
   }
 
+  public function checkRol ($rol) {
+    if(!isset($_SESSION['USER']) || $rol != $this->model->getRol($_SESSION['USER'])){
+      header("Location: index.php");
+      die();
+    }
+  }
+
   public function checkLogin(){
     session_start();
     if(!isset($_SESSION['USER'])){
@@ -49,23 +51,30 @@ class LoginController
     }
   }
 
-  public function checkPermiso () {
-    $user = $this->modelo->getUser("");
-    switch ($user['fk_rol']) {
-      case 0:
-      $adminController = new AdminController($this);
-      $adminController->mostrar();
-      break;
-      default:
-      return -1;
-      break;
-    }
-  }
   public function logout(){
     session_start();
     session_destroy();
     header("Location: login");
     die();
+  }
+
+  public function mostrarRegistro () {
+      $this->vista->mostrarRegistro();
+  }
+
+  public function nuevoUsuario () {
+    if(isset($_POST['email'])) {
+      if(!$this->modelo->getUser($_POST['email'])) {
+        $nuevoUsuario = array();
+        $nuevoUsuario['nombre'] = $_POST['nombreUsuario'];
+        $nuevoUsuario['email'] = $_POST['email'];
+        $nuevoUsuario['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $this->modelo->crearUsuario($nuevoUsuario);
+      }
+      else {
+        echo "Usuario ya existe";
+      }
+    }
   }
 
 }

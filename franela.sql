@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2016 a las 06:09:47
+-- Tiempo de generación: 17-11-2016 a las 01:02:22
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -38,8 +38,9 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `mensaje`, `fk_paquete`, `fk_usuario`) VALUES
-(1, 'COmo estaaaaaaaaaaaassssssssss', 0, 0),
-(2, 'COmo estaaaaaaaaaaaassssssssss', 0, 0);
+(3, 'Como estas Marcelo?', 2, 1),
+(4, 'Higuaín?', 1, 1),
+(5, 'Como estas Argentina', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -145,17 +146,19 @@ CREATE TABLE `turno` (
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
   `email` text NOT NULL,
   `password` varchar(200) NOT NULL,
-  `fk_rol` int(11) NOT NULL
+  `fk_rol` int(11) NOT NULL DEFAULT '2'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `fk_rol`) VALUES
-(1, 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 0);
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `fk_rol`) VALUES
+(1, '', 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 1),
+(3, 'Deivid', 'cdm@yes.com', '$2y$10$B0NJsbUV2RqkQbzHc98dk.WTLUF70uiNbsTA3y4v.gsnt68dhOM/C', 2);
 
 --
 -- Índices para tablas volcadas
@@ -200,7 +203,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --
@@ -215,12 +218,12 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
