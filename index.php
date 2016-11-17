@@ -4,7 +4,7 @@ require('controllers/PresupuestoController.php');
 require('controllers/ContactoController.php');
 require('controllers/TurnosController.php');
 require('controllers/AdminController.php');
-require('controllers/LoginController.php');
+require('controllers/UsuariosController.php');
 require('controllers/PaquetesController.php');
 require('config/ConfigApp.php');
 
@@ -13,7 +13,7 @@ $presupuestoController = new PresupuestoController();
 $contactoController = new ContactoController();
 $turnosController = new TurnosController();
 $paquetesController = new PaquetesController();
-$loginController = new LoginController();
+$usuariosController = new UsuariosController();
 
 
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
@@ -32,26 +32,23 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   $contactoController->mostrar();
   break;
   case ConfigApp::$ACTION_LOGIN_ADMIN:
-  $loginController->login();
+  $usuariosController->login();
   break;
   case ConfigApp::$ACTION_MOSTRAR_REGISTRO:
-  $loginController->mostrarRegistro();
+  $usuariosController->mostrarRegistro();
   break;
   case ConfigApp::$ACTION_NUEVO_USUARIO:
-  $loginController->nuevoUsuario();
+  $usuariosController->nuevoUsuario();
   break;
   case ConfigApp::$ACTION_LOGOUT:
-  $loginController->logout();
-  break;
-  case ConfigApp::$ACTION_CHECK_PERMISO:
-  $loginController->checkPermiso();
+  $usuariosController->logout();
   break;
   case ConfigApp::$ACTION_MOSTRAR_ADMIN:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->mostrar();
   break;
   case ConfigApp::$ACTION_LISTAR_TURNOS:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->listarTurnos();
   break;
   case ConfigApp::$ACTION_GUARDAR_TURNO:

@@ -1,7 +1,7 @@
 <?php
 require_once('libs/Smarty.class.php');
 
-class LoginView
+class UsuariosView
 {
   private $smarty;
 
@@ -20,6 +20,11 @@ class LoginView
 
   function mostrarRegistro () {
     $this->smarty->display('registro.tpl');
+  }
+
+  function usuarioRegistrado($usuario) {
+    $this->smarty->assign('usuario',$usuario);
+    $this->smarty->display('usuarioRegistrado.tpl');
   }
 
 }

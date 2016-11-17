@@ -99,10 +99,23 @@ $(document).ready(function(){
     });
   });
 
-$(document).on('submit','.ajaxForm',function () {
+$(document).on("submit",'.registro', function () {
+  var password = $("input[name*='password']").val();
+  var repePass = $("input[name*='repetidoPassword']").val();
+  if (password!=repePass) {
+    alert("Contraseñas diferentes");
+  }
+  else getForm(this);
+});
+
+$(document).on('submit','.ajaxForm', function(){
+   getForm(this);
+});
+
+function getForm (datos) {
   event.preventDefault();
-  var dir = $(this).attr("href");
-  formData = new FormData(this);
+  var dir = $(datos).attr("href");
+  formData = new FormData(datos);
   $.ajax({
     method: "POST",
     url: dir,
@@ -115,12 +128,16 @@ $(document).on('submit','.ajaxForm',function () {
         case "index.php?action=listar_turnos":
             $("#contenedorTurnos").html(data);
           break;
+          case "index.php?action=nuevo_usuario":
+              console.log(data);
+              $("#cargadorAjax").html(data);
+            break;
         default:
         $("#cargadorAjax").html(data);
       }
     }
   });
-});
+}
 
   function getInfo(link) {
     $.ajax({

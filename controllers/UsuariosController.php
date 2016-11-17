@@ -1,8 +1,8 @@
 <?php
-require_once('views/LoginView.php');
+require_once('views/UsuariosView.php');
 require_once('models/UserModel.php');
 
-class LoginController
+class UsuariosController
 {
   private $vista;
   private $modelo;
@@ -10,7 +10,7 @@ class LoginController
   function __construct()
   {
     $this->modelo = new UserModel();
-    $this->vista = new LoginView();
+    $this->vista = new UsuariosView();
   }
 
   public function login(){
@@ -70,6 +70,7 @@ class LoginController
         $nuevoUsuario['email'] = $_POST['email'];
         $nuevoUsuario['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $this->modelo->crearUsuario($nuevoUsuario);
+        $this->vista->usuarioRegistrado($nuevoUsuario['nombre']);
       }
       else {
         echo "Usuario ya existe";
