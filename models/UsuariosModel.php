@@ -1,11 +1,11 @@
 <?php
-require_once('models/FranelaModel.php');
+require_once('FranelaModel.php');
 
-class UserModel extends FranelaModel
+class UsuariosModel extends FranelaModel
 {
 
   function getUser($user){
-    $sentencia = $this->db->prepare( "select * from usuario where email = ?");
+    $sentencia = $this->db->prepare( "select * from usuario where email=?");
     $sentencia->execute(array($user));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
@@ -16,9 +16,8 @@ class UserModel extends FranelaModel
   }
 
   function getRol ($user) {
-    $sentencia = $this->db->prepare( "select * from usuario where fk_rol = ?");
-    $sentencia->execute(array($user));
-    return $sentencia->fetch(PDO::FETCH_ASSOC);
+    $usuario = $this->getUser($user);
+    return $usuario['fk_rol'];
   }
   function getUserPorComentario($id){
     $sentencia = $this->db->prepare("select * from usuario where id_usuario=?");

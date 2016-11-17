@@ -84,10 +84,13 @@ $(document).ready(function(){
     });
   });
 
+
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
-    $.get( "index.php?action=paquete_comentario",{id_paquete: $(this).attr("data-idpaquete")}, function(data) {
-      $('#cargadorAjax').html(data);
+    var pack = this;
+    $.get( "api/comentario/"+$(this).attr("data-idpaquete"), function(data) {
+      $('#cargadorAjax').html(pack);
+      //llamar a función con Mustache para insertar comentarios
     });
   });
 

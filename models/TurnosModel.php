@@ -1,6 +1,6 @@
 <?php
-require_once('models/FranelaModel.php');
-require_once('models/PaquetesModel.php');
+require_once('FranelaModel.php');
+require_once('PaquetesModel.php');
 
 define ("packFULL",0);
 

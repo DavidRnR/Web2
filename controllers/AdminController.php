@@ -10,11 +10,11 @@ class AdminController
   private $vista;
   private $modelo;
 
-  function __construct($loginController)
+  function __construct($usuariosController)
   {
     $this->vista = new AdminView();
     $this->modelo = new TurnosModel();
-    $loginController->checkRol(1);
+    $usuariosController->checkRol(1);
   }
 
   function mostrar () {

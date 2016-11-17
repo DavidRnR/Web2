@@ -1,6 +1,6 @@
 <?php
 require_once('FranelaModel.php');
-require_once('UserModel.php');
+require_once('UsuariosModel.php');
 
 class ComentariosModel extends FranelaModel {
 
@@ -14,7 +14,7 @@ class ComentariosModel extends FranelaModel {
     $sentencia = $this->db->prepare( "select * from comentario where fk_paquete=?");
     $sentencia->execute(array($id_paquete));
     $comentarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-    $usuarioModel =new UserModel();
+    $usuarioModel =new UsuariosModel();
     foreach ($comentarios as $key => $comentario) {
       $comentarios[$key]['usuario'] = $usuarioModel->getUserPorComentario($comentario['fk_usuario'])['email'];
     }

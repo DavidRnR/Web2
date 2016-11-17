@@ -61,19 +61,19 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   $paquetesController->mostrarComentario();
   break;
   case ConfigApp::$ACTION_AGREGAR_PAQUETE:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->agregarPaquete();
   break;
   case ConfigApp::$ACTION_ELIMINAR_PAQUETE:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->eliminarPaquete();
   break;
   case ConfigApp::$ACTION_ELIMINAR_TURNO:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->eliminarTurno();
   break;
   case ConfigApp::$ACTION_FINALIZAR_TURNO:
-  $adminController = new AdminController($loginController);
+  $adminController = new AdminController($usuariosController);
   $adminController->finalizarTurno();
   break;
   default:

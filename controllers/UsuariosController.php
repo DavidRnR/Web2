@@ -1,6 +1,6 @@
 <?php
 require_once('views/UsuariosView.php');
-require_once('models/UserModel.php');
+require_once('models/UsuariosModel.php');
 
 class UsuariosController
 {
@@ -9,7 +9,7 @@ class UsuariosController
 
   function __construct()
   {
-    $this->modelo = new UserModel();
+    $this->modelo = new UsuariosModel();
     $this->vista = new UsuariosView();
   }
 
@@ -37,9 +37,10 @@ class UsuariosController
   }
 
   public function checkRol ($rol) {
-    if(!isset($_SESSION['USER']) || $rol != $this->model->getRol($_SESSION['USER'])){
-      header("Location: index.php");
-      die();
+    session_start();
+    if(!isset($_SESSION['USER']) || $rol != $this->modelo->getRol($_SESSION['USER'])){
+        header("Location: index.php");
+        die();
     }
   }
 

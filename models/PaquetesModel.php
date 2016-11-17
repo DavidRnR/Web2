@@ -1,7 +1,5 @@
 <?php
-require_once('models/FranelaModel.php');
-
-
+require_once('FranelaModel.php');
 
 class PaquetesModel extends FranelaModel
 {
