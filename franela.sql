@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2016 a las 06:23:15
+-- Tiempo de generación: 19-11-2016 a las 00:43:08
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -38,10 +38,7 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `mensaje`, `fk_paquete`, `fk_usuario`) VALUES
-(4, 'Higuaín?', 1, 1),
-(5, 'Como estas Argentina', 2, 1),
-(7, 'Segunda prueba por API', 2, 3),
-(8, 'Tercera prueba por API', 2, 3);
+(3, 'Como estas Marcelo?', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -140,13 +137,6 @@ CREATE TABLE `turno` (
   `finalizado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `turno`
---
-
-INSERT INTO `turno` (`id_turno`, `cliente`, `turno`, `fk_paquete`, `finalizado`) VALUES
-(3, 'Paaaaaaa', 'Mañana', 1, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -167,7 +157,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `fk_rol`) VALUES
 (1, '', 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 1),
-(3, 'Deivid', 'cdm@yes.com', '$2y$10$B0NJsbUV2RqkQbzHc98dk.WTLUF70uiNbsTA3y4v.gsnt68dhOM/C', 2);
+(3, 'Deivid', 'cdm@yes.com', '$2y$10$B0NJsbUV2RqkQbzHc98dk.WTLUF70uiNbsTA3y4v.gsnt68dhOM/C', 2),
+(4, 'Ram', 'ram@pc.com', '$2y$10$MFMtnHFzAKOiSwWnRyu5L.pC1F4jJ93US1Y8BqI7H1T17C65uFCWS', 2);
 
 --
 -- Índices para tablas volcadas
@@ -212,7 +203,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --
@@ -232,7 +223,7 @@ ALTER TABLE `turno`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

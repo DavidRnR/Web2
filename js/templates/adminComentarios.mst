@@ -13,7 +13,7 @@
       <td>{{paquete}}</td>
       <td>{{nombreUsuario}}</td>
       <td>{{mensaje}}</td>
-      <td><button class="btn btn-danger cambioRol" data-idcomentario="{{id_comentario}}" type="button">Eliminar</button></td>
+      <td><button class="btn btn-danger eliminarComentario" data-idcomentario="{{id_comentario}}" type="button">Eliminar</button></td>
     </tr>
     {{/comentarios}}
   </tbody>

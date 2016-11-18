@@ -9,3 +9,6 @@
     <button type="button" class="btn btn-primary btn-lg btnAdmin" value="comentarios">Comentarios</button>
   </div>
 </div>
+<div class="cargadorAdmin">
+
+</div>

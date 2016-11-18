@@ -107,7 +107,7 @@ $(document).ready(function(){
 
   function crearComentariosAdmin (data){
     var rendered = Mustache.render(templateAdminComentario,{comentarios: data});
-    $('#cargadorAjax').html(rendered);
+    $('.cargadorAdmin').html(rendered);
   }
 
   function crearComentarios (data){
@@ -160,10 +160,29 @@ $(document).on("click",'.btnAdmin', function(){
   }
   else{
     $.get( "mostrar_admin",{seccion: valor }, function(data) {
-      $('#cargadorAjax').html(data);
+      $('.cargadorAdmin').html(data);
     });
   }
 });
+
+
+$(document).on('click','.eliminarComentario', function () {
+    var idComentario = $(this).attr("data-idcomentario");
+    deleteComentario(idComentario);
+    $(this).parents('tr').remove();
+  });
+
+  function deleteComentario (idComentario) {
+    $.ajax ({
+      url: "api/comentario/"+idComentario,
+      method:"DELETE",
+      contentType: "application/json; charset=utf-8",
+      success:function (){},
+      error:function(jqxml, status, errorThrown){
+        console.log(errorThrown);
+      }
+    });
+  }
 
 $(document).on("click",'.cambioRol', function(){
   event.preventDefault();

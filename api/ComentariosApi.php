@@ -22,14 +22,14 @@ class ComentariosApi extends Api {
             return $this->modelo->getComentarios();
           }
       break;
-      //  case 'DELETE':
-      // if(count($argumentos)>0){
-      //   $error['Error'] = "La tarea no existe";
-      //   $success['Success'] = "La tarea se borro";
-      //   $filasAfectadas = $this->modelo->eliminarTarea($argumentos[0]);
-      //   return ($filasAfectadas == 1) ? $success : $error;
-      // }
-      // break;
+       case 'DELETE':
+      if(count($argumentos)>0){
+        $error['Error'] = "El comentario no existe";
+        $success['Success'] = "El comentario se ha borrado";
+        $filasAfectadas = $this->modelo->eliminarComentario($argumentos[0]);
+        return ($filasAfectadas == 1) ? $success : $error;
+      }
+      break;
       case 'POST':
       if(count($argumentos)==0){
         $id_paquete = $_POST['id_paquete'];

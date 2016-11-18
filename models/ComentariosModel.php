@@ -67,6 +67,7 @@ class ComentariosModel extends FranelaModel {
   function eliminarComentario ($id_comentario) {
     $sentencia = $this->db->prepare("delete from comentario where id_comentario=?");
     $sentencia->execute(array($id_comentario));
+    return $sentencia->rowCount();
   }
 }
 ?>
