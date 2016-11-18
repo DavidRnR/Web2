@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2016 a las 01:20:05
+-- Tiempo de generación: 18-11-2016 a las 06:23:15
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -38,9 +38,10 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `mensaje`, `fk_paquete`, `fk_usuario`) VALUES
-(3, 'Como estas Marcelo?', 2, 1),
 (4, 'Higuaín?', 1, 1),
-(5, 'Como estas Argentina', 2, 1);
+(5, 'Como estas Argentina', 2, 1),
+(7, 'Segunda prueba por API', 2, 3),
+(8, 'Tercera prueba por API', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -211,7 +212,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --

@@ -32,12 +32,11 @@ class ComentariosApi extends Api {
       // break;
       case 'POST':
       if(count($argumentos)==0){
-        var_dump($argumentos);
         $id_paquete = $_POST['id_paquete'];
-        $id_usuario = $_POST['email'];
+        $usuario = $_POST['email'];
         $comentario = $_POST['comentario'];
         $error['Error'] = "El comentario no se creo";
-        $id_comentario = $this->modelo->crearComentario($id_paquete,$id_usuario,$comentario);
+        $id_comentario = $this->modelo->crearComentario($id_paquete,$usuario,$comentario);
         return ($id_comentario > 0) ? $this->modelo->getComentario($id_comentario) : $error;
       }
       break;

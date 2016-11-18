@@ -128,6 +128,26 @@ $(document).on("submit",'.registro', function () {
   else getForm(this);
 });
 
+$(document).on('submit','.apiComentar', function(){
+  event.preventDefault();
+  var idpaquete = $(this).attr("href");
+  console.log(formData);
+  formData = new FormData(this);
+  formData.append('id_paquete',idpaquete);
+  $.ajax({
+    method: "POST",
+    url: "api/comentario",
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(data) {
+      console.log(data);
+      $("#cargadorAjax").html(data);
+    }
+  });
+});
+
 $(document).on('submit','.ajaxForm', function(){
   getForm(this);
 });

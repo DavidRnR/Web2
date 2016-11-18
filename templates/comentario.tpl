@@ -19,7 +19,7 @@
 
 <div class="row">
   <div class="col-md-3">
-    <form class="form-inline ajaxForm" href="api/comentario/{$paquete['id_paquete']}" method="post" enctype="multipart/form-data">
+    <form class="form-inline apiComentar" href="{$paquete['id_paquete']}" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" name="email" class="form-control" placeholder="ejemplo@exa.com">
