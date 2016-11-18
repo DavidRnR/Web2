@@ -57,8 +57,8 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_MOSTRAR_PAQUETE:
   $paquetesController->mostrarPaquetes();
   break;
-  case ConfigApp::$ACTION_MOSTRAR_COMENTARIO:
-  $paquetesController->mostrarComentario();
+  case ConfigApp::$ACTION_PAQUETE_COMENTARIO:
+  $paquetesController->mostrarBoxComentario();
   break;
   case ConfigApp::$ACTION_AGREGAR_PAQUETE:
   $adminController = new AdminController($usuariosController);

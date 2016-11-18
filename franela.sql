@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2016 a las 01:02:22
+-- Tiempo de generación: 18-11-2016 a las 01:20:05
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -93,17 +93,18 @@ INSERT INTO `imagen` (`path`, `fk_id_turno`) VALUES
 
 CREATE TABLE `paquete` (
   `id_paquete` int(11) NOT NULL,
-  `paquete` varchar(60) NOT NULL
+  `paquete` varchar(60) NOT NULL,
+  `detalle_pack` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `paquete`
 --
 
-INSERT INTO `paquete` (`id_paquete`, `paquete`) VALUES
-(1, 'PACK FULL'),
-(2, 'PACK MEDIUM'),
-(3, 'PACK BASICO');
+INSERT INTO `paquete` (`id_paquete`, `paquete`, `detalle_pack`) VALUES
+(1, 'PACK FULL', '3 Servicio semanal\r\nCon insumos\r\n$800 '),
+(2, 'PACK MEDIUM', '2 Servicio semanal\r\nSin insumos\r\n$459 '),
+(3, 'PACK BASICO', '1 Servicio semanal\r\nSin insumos\r\n$299 ');
 
 -- --------------------------------------------------------
 
@@ -137,6 +138,13 @@ CREATE TABLE `turno` (
   `fk_paquete` int(11) NOT NULL,
   `finalizado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `turno`
+--
+
+INSERT INTO `turno` (`id_turno`, `cliente`, `turno`, `fk_paquete`, `finalizado`) VALUES
+(3, 'Paaaaaaa', 'Mañana', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -218,7 +226,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

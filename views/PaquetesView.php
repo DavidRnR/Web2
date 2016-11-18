@@ -17,9 +17,8 @@ class PaquetesView
     $this->smarty->display('paquetes.tpl');
   }
 
-  function mostrarComentario ($paquete,$comentarios) {
+  function mostrarBoxComentario ($paquete) {
     $this->smarty->assign('paquete',$paquete);
-    $this->smarty->assign('comentarios',$comentarios);
     $this->smarty->display('comentario.tpl');
   }
 }

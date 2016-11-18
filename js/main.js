@@ -84,23 +84,40 @@ $(document).ready(function(){
     });
   });
 
-
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
-    var pack = this;
-    $.get( "api/comentario/"+$(this).attr("data-idpaquete"), function(data) {
-      $('#cargadorAjax').html(pack);
-      //llamar a función con Mustache para insertar comentarios
+    var id = $(this).attr("data-idpaquete");
+    $.get("index.php?action=paquete_comentario",{id_paquete: id},function(data) {
+      $('#cargadorAjax').html(data);
+      getComentarios(id);
     });
   });
 
-  $(document).on("click",'.turnoFinalizado', function(){
-    event.preventDefault();
-    var dropdown = $('#dropdownPaquete option:selected').val();
-    $.get( "index.php?action=finalizar_turno&id_turno="+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
-      $('#contenedorTurnos').html(data);
+  function getComentarios (idpaquete) {
+    $.get( "api/comentario/"+idpaquete, function(data) {
+      crearComentarios(data);
     });
+  }
+
+  function crearComentarios (data){
+    var rendered = Mustache.render(template,{comentarios: data});
+    $('.cargadorComentarios').html(rendered);
+  }
+
+  var template;
+  $.ajax({ url: 'js/templates/comentario.mst',
+  success: function(templateReceived) {
+    template = templateReceived;
+  }
+});
+
+$(document).on("click",'.turnoFinalizado', function(){
+  event.preventDefault();
+  var dropdown = $('#dropdownPaquete option:selected').val();
+  $.get( "index.php?action=finalizar_turno&id_turno="+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
+    $('#contenedorTurnos').html(data);
   });
+});
 
 $(document).on("submit",'.registro', function () {
   var password = $("input[name*='password']").val();
@@ -112,7 +129,7 @@ $(document).on("submit",'.registro', function () {
 });
 
 $(document).on('submit','.ajaxForm', function(){
-   getForm(this);
+  getForm(this);
 });
 
 function getForm (datos) {
@@ -129,12 +146,14 @@ function getForm (datos) {
     success: function(data) {
       switch (dir) {
         case "index.php?action=listar_turnos":
-            $("#contenedorTurnos").html(data);
-          break;
-          case "index.php?action=nuevo_usuario":
-              console.log(data);
-              $("#cargadorAjax").html(data);
-            break;
+        $("#contenedorTurnos").html(data);
+        break;
+        case "index.php?action=nuevo_usuario":
+        $("#cargadorAjax").html(data);
+        break;
+        case "api/comentario":
+        console.log("Comentadoooooooo");
+        break;
         default:
         $("#cargadorAjax").html(data);
       }
@@ -142,32 +161,32 @@ function getForm (datos) {
   });
 }
 
-  function getInfo(link) {
-    $.ajax({
-      url: link,
-      method:"GET",
-      dataType: "html",
-      success: function(resultData){
-        switch (link) {
-          case "quienessomos.html":
-            $("#cargadorAjax").removeClass("fondo");
-            $('footer').show();
-            break;
-            case "index.php?action=mostrar_admin":
-            $("#cargadorAjax").removeClass("fondo");
-            $('footer').hide();
-            break;
-          default:
-          $('footer').show();
-          $("#cargadorAjax").addClass("fondo");
-        }
-        $("#cargadorAjax").html(resultData);
-      },
-      error:function(jqxml, status, errorThrown){
-        alert('Error');
+function getInfo(link) {
+  $.ajax({
+    url: link,
+    method:"GET",
+    dataType: "html",
+    success: function(resultData){
+      switch (link) {
+        case "quienessomos.html":
+        $("#cargadorAjax").removeClass("fondo");
+        $('footer').show();
+        break;
+        case "index.php?action=mostrar_admin":
+        $("#cargadorAjax").removeClass("fondo");
+        $('footer').hide();
+        break;
+        default:
+        $('footer').show();
+        $("#cargadorAjax").addClass("fondo");
       }
-    });
-    $("#cargadorAjax").html("<h3>Cargando...</h3>");
-    event.preventDefault();
-  }
+      $("#cargadorAjax").html(resultData);
+    },
+    error:function(jqxml, status, errorThrown){
+      alert('Error');
+    }
+  });
+  $("#cargadorAjax").html("<h3>Cargando...</h3>");
+  event.preventDefault();
+}
 });

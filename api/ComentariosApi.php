@@ -30,13 +30,17 @@ class ComentariosApi extends Api {
       //   return ($filasAfectadas == 1) ? $success : $error;
       // }
       // break;
-      // case 'POST':
-      // if(count($argumentos)==0){
-      //   $error['Error'] = "La tarea no se creo";
-      //   $id_tarea = $this->modelo->crearTarea($_POST['tarea'],[]);
-      //   return ($id_tarea > 0) ? $this->modelo->getTarea($id_tarea) : $error;
-      // }
-      // break;
+      case 'POST':
+      if(count($argumentos)==0){
+        var_dump($argumentos);
+        $id_paquete = $_POST['id_paquete'];
+        $id_usuario = $_POST['email'];
+        $comentario = $_POST['comentario'];
+        $error['Error'] = "El comentario no se creo";
+        $id_comentario = $this->modelo->crearComentario($id_paquete,$id_usuario,$comentario);
+        return ($id_comentario > 0) ? $this->modelo->getComentario($id_comentario) : $error;
+      }
+      break;
       default:
       return "Only accepts GET";
       break;

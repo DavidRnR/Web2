@@ -20,13 +20,11 @@ class PaquetesController
     $this->vista->mostrarPaquetes($paquetes);
   }
 
-  function mostrarComentario () {
+  function mostrarBoxComentario () {
     if (isset($_GET['id_paquete'])) {
       $id_paquete = $_GET['id_paquete'];
       $paquete= $this->modelo->getPaquete($id_paquete);
-      $comentarioModel = new ComentariosModel();
-      $comentarios= $comentarioModel->getComentariosPaquete($id_paquete);
-      $this->vista->mostrarComentario($paquete,$comentarios);
+      $this->vista->mostrarBoxComentario($paquete);
     }
   }
 

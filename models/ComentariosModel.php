@@ -16,7 +16,9 @@ class ComentariosModel extends FranelaModel {
     $comentarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     $usuarioModel =new UsuariosModel();
     foreach ($comentarios as $key => $comentario) {
-      $comentarios[$key]['usuario'] = $usuarioModel->getUserPorComentario($comentario['fk_usuario'])['email'];
+      $usuario = $usuarioModel->getUserPorComentario($comentario['fk_usuario']);
+      $comentarios[$key]['nombreUsuario'] = $usuario['nombre'];
+      $comentarios[$key]['email'] = $usuario['email'];
     }
     return $comentarios;
   }
@@ -26,9 +28,11 @@ class ComentariosModel extends FranelaModel {
     $sentencia->execute(array($id_comentario));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
-  function agregarComentario ($comentario) {
-    $sentencia = $this->db->prepare("INSERT INTO comentario(mensaje) VALUES(:mensaje)");
-    $sentencia->execute($comentario);
+  function crearComentario($id_paquete,$id_usuario,$comentario) {
+    $sentencia = $this->db->prepare("INSERT INTO comentario(mensaje,fk_paquete,fk_usuario) VALUES(:mensaje,:fk_paquete,:fk_usuario)");
+    $sentencia->execute($comentario,$id_paquete,$id_usuario);
+    $id_comentario = $this->db->lastInsertId();
+    return $id_comentario;
   }
 
   function eliminarComentario ($id_comentario) {
