@@ -89,31 +89,49 @@ $(document).ready(function(){
     var id = $(this).attr("data-idpaquete");
     $.get("index.php?action=paquete_comentario",{id_paquete: id},function(data) {
       $('#cargadorAjax').html(data);
-      getComentarios(id);
+      getComentariosPack(id);
     });
   });
 
-  function getComentarios (idpaquete) {
+  function getComentariosPack (idpaquete) {
     $.get( "api/comentario/"+idpaquete, function(data) {
       crearComentarios(data);
     });
   }
 
+  function getComentarios () {
+    $.get( "api/comentario", function(data) {
+      crearComentariosAdmin(data);
+    });
+  }
+
+  function crearComentariosAdmin (data){
+    var rendered = Mustache.render(templateAdminComentario,{comentarios: data});
+    $('#cargadorAjax').html(rendered);
+  }
+
   function crearComentarios (data){
-    var rendered = Mustache.render(template,{comentarios: data});
+    var rendered = Mustache.render(templateComentario,{comentarios: data});
     $('.cargadorComentarios').html(rendered);
   }
 
   function crearComentario (data){
-    var rendered = Mustache.render(template,{comentarios: [data]});
+    var rendered = Mustache.render(templateComentario,{comentarios: [data]});
     $('.cargadorComentarios').append(rendered);
   }
 
-  var template;
+  var templateComentario;
   $.ajax({ url: 'js/templates/comentario.mst',
   success: function(templateReceived) {
-    template = templateReceived;
+    templateComentario = templateReceived;
   }
+});
+
+var templateAdminComentario;
+$.ajax({ url: 'js/templates/adminComentarios.mst',
+success: function(templateReceived) {
+  templateAdminComentario = templateReceived;
+}
 });
 
 $(document).on("click",'.turnoFinalizado', function(){
@@ -132,6 +150,30 @@ $(document).on("submit",'.registro', function () {
   }
   else getForm(this);
 });
+
+$(document).on("click",'.btnAdmin', function(){
+  event.preventDefault();
+  var valor = $(this).attr("value");
+
+  if (valor=="comentarios") {
+    getComentarios();
+  }
+  else{
+    $.get( "mostrar_admin",{seccion: valor }, function(data) {
+      $('#cargadorAjax').html(data);
+    });
+  }
+});
+
+$(document).on("click",'.cambioRol', function(){
+  event.preventDefault();
+  var idusuario = $(this).attr("data-idusuario");
+
+  $.get( "cambiar_rol",{id_usuario: idusuario}, function(data) {
+    $('#cargadorAjax').html(data);
+  });
+});
+
 
 $(document).on('submit','.ajaxForm', function(){
   getForm(this);
@@ -157,7 +199,7 @@ function getForm (datos) {
         $("#cargadorAjax").html(data);
         break;
         case "api/comentario":
-          crearComentario(data);
+        crearComentario(data);
         break;
         default:
         $("#cargadorAjax").html(data);

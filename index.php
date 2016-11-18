@@ -47,6 +47,10 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   $adminController = new AdminController($usuariosController);
   $adminController->mostrar();
   break;
+  case ConfigApp::$ACTION_CAMBIAR_ROL:
+  $adminController = new AdminController($usuariosController);
+  $adminController->cambiarRol();
+  break;
   case ConfigApp::$ACTION_LISTAR_TURNOS:
   $adminController = new AdminController($usuariosController);
   $adminController->listarTurnos();

@@ -8,8 +8,8 @@ class ConfigApp{
   public static $ACTION_LOGIN_ADMIN = 'mostrar_login';
   public static $ACTION_MOSTRAR_REGISTRO = 'mostrar_registro';
   public static $ACTION_NUEVO_USUARIO = 'nuevo_usuario';
+  public static $ACTION_CAMBIAR_ROL = 'cambiar_rol';
   public static $ACTION_LOGOUT = 'logout_login';
-  public static $ACTION_CHECK_PERMISO = 'check_permiso';
   public static $ACTION_GUARDAR_TURNO = 'guardar_turno';
   public static $ACTION_MOSTRAR_PAQUETE = 'mostrar_paquetes';
   public static $ACTION_PAQUETE_COMENTARIO = 'paquete_comentario';

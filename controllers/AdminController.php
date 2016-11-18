@@ -3,6 +3,7 @@
 require_once ('views/AdminView.php');
 require_once ('models/TurnosModel.php');
 require_once ('models/PaquetesModel.php');
+require_once ('models/UsuariosModel.php');
 
 
 class AdminController
@@ -18,8 +19,29 @@ class AdminController
   }
 
   function mostrar () {
-      $paquetes = new PaquetesModel();
-      $this->vista->mostrar($paquetes->getPaquetes());
+    if(isset($_GET['seccion'])) {
+      switch ($_GET['seccion']) {
+        case 'paquetes':
+        $this->mostrarPaquetes();
+        break;
+        case 'usuarios':
+        $this->mostrarUsuarios();
+        break;
+        default:
+        $this->vista->mostrar();
+        break;
+      }
+    }else $this->vista->mostrar();
+  }
+
+  function mostrarUsuarios () {
+    $usuariosModel = new UsuariosModel();
+    $this->vista->mostrarUsuarios($usuariosModel->getUsuarios());
+  }
+
+  function mostrarPaquetes () {
+    $paquetes = new PaquetesModel();
+    $this->vista->mostrarPaquetes($paquetes->getPaquetes());
   }
 
   function eliminarPaquete () {
@@ -27,7 +49,7 @@ class AdminController
       $id_paquete = $_POST['paquete'];
       $paquetes = new PaquetesModel();
       $paquetes->eliminarPaquete($id_paquete);
-      $this->mostrar();
+      $this->mostrarPaquetes();
     }
   }
   function agregarPaquete () {
@@ -36,7 +58,7 @@ class AdminController
       $paquete['detalle'] = $_POST['detallePaquete'];
       $modeloPaquetes = new PaquetesModel();
       $modeloPaquetes->agregarPaquete($paquete);
-      $this->mostrar();
+      $this->mostrarPaquetes();
     }
   }
 
@@ -52,18 +74,30 @@ class AdminController
   }
 
   function eliminarTurno(){
-    $id_turno = $_GET['id_turno'];
-    $paquete = $this->modelo->getidPaquete($id_turno);
-    $this->modelo->eliminarTurno($id_turno);
-    $this->listarTurnos();
+    if(isset($_GET['id_turno'])) {
+      $id_turno = $_GET['id_turno'];
+      $paquete = $this->modelo->getidPaquete($id_turno);
+      $this->modelo->eliminarTurno($id_turno);
+      $this->listarTurnos();
+    }
+
   }
 
   function finalizarTurno(){;
-    $id_turno = $_GET['id_turno'];
-    $this->modelo->toogleTurno($id_turno);
-    $this->listarTurnos();
+    if(isset($_GET['id_turno'])) {
+      $id_turno = $_GET['id_turno'];
+      $this->modelo->toogleTurno($id_turno);
+      $this->listarTurnos();
+    }
   }
 
+  function cambiarRol () {
+      if(isset($_GET['id_usuario'])) {
+        $usuariosModel = new UsuariosModel();
+        $usuario = $usuariosModel->cambiarRol($_GET['id_usuario']);
+        $this->mostrarUsuarios();   
+      }
+  }
 }
 
 

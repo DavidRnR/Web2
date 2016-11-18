@@ -1,22 +1,34 @@
 <?php
 require_once('FranelaModel.php');
 require_once('UsuariosModel.php');
+require_once('PaquetesModel.php');
 
 class ComentariosModel extends FranelaModel {
 
   private $modeloUsuario;
+  private $modeloPaquetes;
 
   function __construct()
   {
     parent::__construct();
     $this->modeloUsuario = new UsuariosModel();
+    $this->modeloPaquetes = new PaquetesModel();
   }
 
 
   function getComentarios () {
     $sentencia = $this->db->prepare( "select * from comentario");
     $sentencia->execute();
-    return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    $comentarios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($comentarios as $key => $comentario) {
+      $usuario = $this->modeloUsuario->getUserPorComentario($comentario['fk_usuario']);
+      $paquete = $this->modeloPaquetes->getPaquete($comentario['fk_paquete']);
+      $comentarios[$key]['nombreUsuario'] = $usuario['nombre'];
+      $comentarios[$key]['email'] = $usuario['email'];
+      $comentarios[$key]['paquete'] = $paquete['paquete'];
+    }
+    return $comentarios;
   }
 
   function getComentariosPaquete ($id_paquete) {

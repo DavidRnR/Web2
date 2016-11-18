@@ -21,11 +21,19 @@ private $smarty;
     $this->smarty->display('login.tpl');
   }
 
-  function mostrar($paquetes){
-    $this->smarty->assign('paquetes',$paquetes);
+  function mostrar () {
     $this->smarty->display('administracion.tpl');
   }
 
+  function mostrarPaquetes($paquetes){
+    $this->smarty->assign('paquetes',$paquetes);
+    $this->smarty->display('adminPaquetes.tpl');
+  }
+
+  function mostrarUsuarios ($usuarios) {
+    $this->smarty->assign('usuarios',$usuarios);
+    $this->smarty->display('adminUsuarios.tpl');
+  }
 
 }
 
