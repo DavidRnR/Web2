@@ -104,6 +104,11 @@ $(document).ready(function(){
     $('.cargadorComentarios').html(rendered);
   }
 
+  function crearComentario (data){
+    var rendered = Mustache.render(template,{comentarios: [data]});
+    $('.cargadorComentarios').append(rendered);
+  }
+
   var template;
   $.ajax({ url: 'js/templates/comentario.mst',
   success: function(templateReceived) {
@@ -114,7 +119,7 @@ $(document).ready(function(){
 $(document).on("click",'.turnoFinalizado', function(){
   event.preventDefault();
   var dropdown = $('#dropdownPaquete option:selected').val();
-  $.get( "index.php?action=finalizar_turno&id_turno="+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
+  $.get( "finalizar_turno/"+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
     $('#contenedorTurnos').html(data);
   });
 });
@@ -126,26 +131,6 @@ $(document).on("submit",'.registro', function () {
     alert("Contraseñas diferentes");
   }
   else getForm(this);
-});
-
-$(document).on('submit','.apiComentar', function(){
-  event.preventDefault();
-  var idpaquete = $(this).attr("href");
-  console.log(formData);
-  formData = new FormData(this);
-  formData.append('id_paquete',idpaquete);
-  $.ajax({
-    method: "POST",
-    url: "api/comentario",
-    data: formData,
-    contentType: false,
-    cache: false,
-    processData: false,
-    success: function(data) {
-      console.log(data);
-      $("#cargadorAjax").html(data);
-    }
-  });
 });
 
 $(document).on('submit','.ajaxForm', function(){
@@ -172,7 +157,7 @@ function getForm (datos) {
         $("#cargadorAjax").html(data);
         break;
         case "api/comentario":
-        console.log("Comentadoooooooo");
+          crearComentario(data);
         break;
         default:
         $("#cargadorAjax").html(data);

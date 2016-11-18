@@ -34,7 +34,14 @@ class ComentariosModel extends FranelaModel {
   function getComentario($id_comentario){
     $sentencia = $this->db->prepare( "select * from comentario where id_comentario=?");
     $sentencia->execute(array($id_comentario));
-    return $sentencia->fetch(PDO::FETCH_ASSOC);
+    $comentario = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+    $usuario = $this->modeloUsuario->getUserPorComentario($comentario['fk_usuario']);
+
+    $comentario['email'] = $usuario['email'];
+    $comentario['nombreUsuario'] = $usuario['nombre'];
+
+    return $comentario;
   }
 
   function crearComentario($id_paquete,$usuario,$comentario) {
