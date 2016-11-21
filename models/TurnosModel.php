@@ -68,5 +68,10 @@ class TurnosModel extends FranelaModel
     $turno = $this->getTurno($id_turno);
     return $turno['fk_paquete'];
   }
+
+  function eliminarImagen ($imgpath) {
+    $sentencia = $this->db->prepare("delete from imagen where path=?");
+    $sentencia->execute(array($imgpath));
+  }
 }
 ?>

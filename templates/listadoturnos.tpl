@@ -1,23 +1,39 @@
-<div class="col-3-md col-md-offset-4">
-  <ul class="list-group listaadmin">
+<table class="table table-hover">
+  <thead>
+    <td>#</td>
+    <td>Cliente</td>
+    <td>Turno</td>
+    <td>Paquete</td>
+    <td>Imagenes</td>
+    <td></td>
+  </thead>
+  <tbody>
     {foreach from=$turnos key=index item=turno}
-    <li>
-      {$turno['cliente']}
-      <ul>
-        <li>{$turno['turno']}</li>
-        <li>{$turno['paqueteturno']['paquete']}</li>
-        <li class="listadoImagenes">
+    <tr>
+      <td>{$index}</td>
+      <td>{$turno['cliente']}</td>
+      <td>{$turno['turno']}</td>
+      <td>{$turno['paqueteturno']['paquete']}</td>
+      <td>
+        <div class="row">
           {foreach from=$turno['imagenesturno'] key=index item=imagen}
-          <img data-u="image" src="{$imagen['path']}" alt="TurnoImagen_{$turno['cliente']}_{$imagen['fk_id_turno']}"  class="img-responsive img-rounded"width="74" >
+          <div class="col-xs-6 col-md-3">
+            <a href="{$imagen['path']}" class="thumbnail">
+              <img data-u="image" src="{$imagen['path']}" alt="TurnoImagen_{$turno['cliente']}_{$imagen['fk_id_turno']}"  class="thumbnail img-rounded" >
+            </a>
+            <button class="btn btn-danger btn-xs eliminarImagen" type="button" data-imgpath="{$imagen['path']}">Eliminar</button>
+          </div>
           {/foreach}
-        </li>
+        </div>
+      </td>
+      <td>
         {if $turno['finalizado']==0}
         <button class="btn btn-success turnoFinalizado" type="button" data-idturno="{$turno['id_turno']}">Finalizar Turno</button>
         {else}
         <button class="btn btn-danger eliminarTurno" type="button" data-idturno="{$turno['id_turno']}">Eliminar Turno</button>
         {/if}
-      </ul>
-    </li>
+      </td>
+    </tr>
     {/foreach}
-  </ul>
-</div>
+  </tbody>
+</table>

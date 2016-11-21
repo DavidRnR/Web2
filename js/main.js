@@ -84,6 +84,15 @@ $(document).ready(function(){
     });
   });
 
+  $(document).on("click",'.eliminarImagen', function(){
+    event.preventDefault();
+    var dropdown = $('#dropdownPaquete option:selected').val();
+    $.get( "eliminar_imagen",{imgpath: $(this).attr("data-imgpath"), paqueteSel: dropdown}, function(data) {
+      console.log(data);
+      $('#contenedorTurnos').html(data);
+    });
+  });
+
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
     var id = $(this).attr("data-idpaquete");

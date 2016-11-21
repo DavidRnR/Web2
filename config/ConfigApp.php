@@ -15,10 +15,8 @@ class ConfigApp{
   public static $ACTION_AGREGAR_PAQUETE = 'agregar_paquete';
   public static $ACTION_ELIMINAR_PAQUETE = 'eliminar_paquete';
   public static $ACTION_ELIMINAR_TURNO = 'eliminar_turno';
+  public static $ACTION_ELIMINAR_IMAGEN = 'eliminar_imagen';
   public static $ACTION_FINALIZAR_TURNO = 'finalizar_turno';
   public static $ACTION_LISTAR_TURNOS = 'listar_turnos';
-
-
   }
-
  ?>

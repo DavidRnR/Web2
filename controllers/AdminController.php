@@ -80,7 +80,13 @@ class AdminController
       $this->modelo->eliminarTurno($id_turno);
       $this->listarTurnos();
     }
+  }
 
+  function eliminarImagen() {
+    if(isset($_GET['imgpath'])) {
+      $this->modelo->eliminarImagen($_GET['imgpath']);
+      $this->listarTurnos();
+    }
   }
 
   function finalizarTurno(){;
@@ -92,11 +98,11 @@ class AdminController
   }
 
   function cambiarRol () {
-      if(isset($_GET['id_usuario'])) {
-        $usuariosModel = new UsuariosModel();
-        $usuario = $usuariosModel->cambiarRol($_GET['id_usuario']);
-        $this->mostrarUsuarios();   
-      }
+    if(isset($_GET['id_usuario'])) {
+      $usuariosModel = new UsuariosModel();
+      $usuario = $usuariosModel->cambiarRol($_GET['id_usuario']);
+      $this->mostrarUsuarios();
+    }
   }
 }
 

@@ -76,6 +76,10 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   $adminController = new AdminController($usuariosController);
   $adminController->eliminarTurno();
   break;
+  case ConfigApp::$ACTION_ELIMINAR_IMAGEN:
+  $adminController = new AdminController($usuariosController);
+  $adminController->eliminarImagen();
+  break;
   case ConfigApp::$ACTION_FINALIZAR_TURNO:
   $adminController = new AdminController($usuariosController);
   $adminController->finalizarTurno();
