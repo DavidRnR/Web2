@@ -47,15 +47,20 @@ class UsuariosController
   public function checkLogin(){
     session_start();
     if(!isset($_SESSION['USER'])){
-      header("Location: index.php");
-      die();
+      return false;
     }
+    return true;
+  }
+
+  public function getRol(){    
+    $rol=$this->modelo->getRol($_SESSION['USER']);
+    return $rol;
   }
 
   public function logout(){
     session_start();
     session_destroy();
-    header("Location: login");
+    header("Location: index.php");
     die();
   }
 

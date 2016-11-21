@@ -1,5 +1,5 @@
 <div class="col-md-4 col-md-offset-4">
-  <form class="form-signin ajaxForm" href="index.php?action=mostrar_login" method="post" enctype="multipart/form-data">
+  <form class="form-signin ajaxForm" href="mostrar_login" method="post" enctype="multipart/form-data">
     <h2 class="form-signin-heading">Please sign in</h2>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="email" name="usuario" class="form-control" placeholder="Email address" required="" autofocus="">

@@ -13,7 +13,7 @@ $(document).ready(function(){
 
   function getLinkPaquetesServicio(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_paquetes";
+    var link = "mostrar_paquetes";
     getInfo(link);
   }
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
   function getLinkPresupuesto(event) {
     event.preventDefault();
-    var link = "index.php?action=mostrar_presupuesto";
+    var link = "mostrar_presupuesto";
 
     getInfo(link);
   }
@@ -39,7 +39,7 @@ $(document).ready(function(){
 
   function getLinkContacto(event) {
     event.preventDefault();
-    var link = "index.php?action=mostrar_contacto";
+    var link = "mostrar_contacto";
 
     getInfo(link);
   }
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
   function getLinkLogin(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_login";
+    var link = "mostrar_login";
     getInfo(link);
   }
 
@@ -56,7 +56,7 @@ $(document).ready(function(){
 
   function getLinkRegistro(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_registro";
+    var link = "mostrar_registro";
     getInfo(link);
   }
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
   function getLinkAdmin(event){
     event.preventDefault();
-    var link = "index.php?action=mostrar_admin";
+    var link = "mostrar_admin";
     getInfo(link);
   }
 
@@ -72,14 +72,14 @@ $(document).ready(function(){
 
   function getLinkLogout(event){
     event.preventDefault();
-    var link = "index.php?action=logout_login";
+    var link = "logout_login";
     getInfo(link);
   }
 
   $(document).on("click",'.eliminarTurno', function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();
-    $.get( "index.php?action=eliminar_turno",{id_turno: $(this).attr("data-idturno"), paqueteSel: dropdown}, function(data) {
+    $.get( "eliminar_turno",{id_turno: $(this).attr("data-idturno"), paqueteSel: dropdown}, function(data) {
       $('#contenedorTurnos').html(data);
     });
   });
@@ -87,7 +87,7 @@ $(document).ready(function(){
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
     var id = $(this).attr("data-idpaquete");
-    $.get("index.php?action=paquete_comentario",{id_paquete: id},function(data) {
+    $.get("paquete_comentario",{id_paquete: id},function(data) {
       $('#cargadorAjax').html(data);
       getComentariosPack(id);
     });
@@ -193,6 +193,11 @@ $(document).on("click",'.cambioRol', function(){
   });
 });
 
+function recargar () {
+  $.get( 'index.php',function(data) {
+
+});
+}
 
 $(document).on('submit','.ajaxForm', function(){
   getForm(this);
@@ -211,10 +216,13 @@ function getForm (datos) {
     processData: false,
     success: function(data) {
       switch (dir) {
-        case "index.php?action=listar_turnos":
+        case "mostrar_login":
+        $("body").html(data);
+        break;        
+        case "listar_turnos":
         $("#contenedorTurnos").html(data);
         break;
-        case "index.php?action=nuevo_usuario":
+        case "nuevo_usuario":
         $("#cargadorAjax").html(data);
         break;
         case "api/comentario":
@@ -238,7 +246,7 @@ function getInfo(link) {
         $("#cargadorAjax").removeClass("fondo");
         $('footer').show();
         break;
-        case "index.php?action=mostrar_admin":
+        case "mostrar_admin":
         $("#cargadorAjax").removeClass("fondo");
         $('footer').hide();
         break;

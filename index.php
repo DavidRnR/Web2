@@ -8,7 +8,7 @@ require('controllers/UsuariosController.php');
 require('controllers/PaquetesController.php');
 require('config/ConfigApp.php');
 
-$franelaController = new FranelaController();
+
 $presupuestoController = new PresupuestoController();
 $contactoController = new ContactoController();
 $turnosController = new TurnosController();
@@ -16,7 +16,9 @@ $paquetesController = new PaquetesController();
 $usuariosController = new UsuariosController();
 
 
+
 if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
+  $franelaController = new FranelaController($usuariosController);
   $franelaController->iniciar();
   die();
 }
@@ -81,6 +83,7 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   $adminController->finalizarTurno();
   break;
   default:
+  $franelaController = new FranelaController($usuariosController);
   $franelaController->iniciar();
   break;
 }
