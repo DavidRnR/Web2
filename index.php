@@ -33,7 +33,7 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_MOSTRAR_CONTACTO:
   $contactoController->mostrar();
   break;
-  case ConfigApp::$ACTION_LOGIN_ADMIN:
+  case ConfigApp::$ACTION_LOGIN:
   $usuariosController->login();
   break;
   case ConfigApp::$ACTION_MOSTRAR_REGISTRO:

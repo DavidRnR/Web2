@@ -10,11 +10,7 @@ class UsuariosView
     $this->smarty = new Smarty();
   }
 
-  function agregarError($error){
-    $this->smarty->assign('error',$error);
-  }
-
-  function mostrar($error){
+  function mostrar(){
     $this->smarty->display('login.tpl');
   }
 

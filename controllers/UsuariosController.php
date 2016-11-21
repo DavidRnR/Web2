@@ -14,13 +14,12 @@ class UsuariosController
   }
 
   public function login(){
-    if(!isset($_REQUEST['usuario']))
+    if(!isset($_POST['usuario']) && !isset($_POST["password"]))
     $this->vista->mostrar([]);
     else {
-      $user = $_REQUEST['usuario'];
-      $pass = $_REQUEST['password'];
+      $user = $_POST['usuario'];
+      $pass = $_POST['password'];
       $hash = $this->modelo->getUser($user)["password"];
-      //TODO: falta controlar el caso de que el usuario no exista
       if(password_verify($pass, $hash))
       {
         session_start();
@@ -30,7 +29,8 @@ class UsuariosController
       }
       else
       {
-        $this->vista->mostrar(["BAD"]);
+        $error = "User pass error";
+        echo($error);
       }
 
     }

@@ -88,6 +88,9 @@ h6 {
   margin-top: 1%;
 }
 
+#loginError {
+    visibility: hidden;
+}
 .listado{
   margin-top: 20%;
   color: white;
@@ -128,7 +131,7 @@ label{
 }
 
 .inputComentario {
-  width: 250%;
+  width: 60px;
 }
 .backformturnos{
   margin-top: 5%;

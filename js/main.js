@@ -48,7 +48,7 @@ $(document).ready(function(){
 
   function getLinkLogin(event){
     event.preventDefault();
-    var link = "mostrar_login";
+    var link = "login";
     getInfo(link);
   }
 
@@ -188,7 +188,7 @@ $(document).on('click','.eliminarComentario', function () {
     method:"DELETE",
     contentType: "application/json; charset=utf-8",
     success:function (data){
-      if (data['Success']) {
+        if (data['Success']) {
         $('.cargadorAdmin').html(getComentarios());
       }
       else console.log(data['Error']);
@@ -225,8 +225,13 @@ function getForm (datos) {
     processData: false,
     success: function(data) {
       switch (dir) {
-        case "mostrar_login":
-        $("body").html(data);
+        case "login":
+        if(data == "User pass error") {
+          $("div .form-group").addClass('has-error');
+          $("input").val("");
+          $('#loginError').css('visibility', 'visible');
+        }
+        else $("body").html(data);
         break;
         case "listar_turnos":
         $("#contenedorTurnos").html(data);
@@ -236,6 +241,8 @@ function getForm (datos) {
         break;
         case "api/comentario":
         crearComentario(data);
+        $('textarea').val("");
+        $('label').css('color','#ddd');
         break;
         default:
         $("#cargadorAjax").html(data);
