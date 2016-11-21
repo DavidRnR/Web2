@@ -9,8 +9,8 @@ class FranelaView
     $this->smarty = new Smarty();
   }
 
-  function mostrar ($rol) {
-    $this->smarty->assign('usuarioRol',$rol);
+  function mostrar ($usuario) {
+    $this->smarty->assign('usuario',$usuario);
     $this->smarty->display('index.tpl');
   }
 }

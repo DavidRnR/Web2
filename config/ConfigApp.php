@@ -11,7 +11,6 @@ class ConfigApp{
   public static $ACTION_CAMBIAR_ROL = 'cambiar_rol';
   public static $ACTION_LOGOUT = 'logout_login';
   public static $ACTION_GUARDAR_TURNO = 'guardar_turno';
-  public static $ACTION_MOSTRAR_PAQUETE = 'mostrar_paquetes';
   public static $ACTION_PAQUETE_COMENTARIO = 'paquete_comentario';
   public static $ACTION_AGREGAR_PAQUETE = 'agregar_paquete';
   public static $ACTION_ELIMINAR_PAQUETE = 'eliminar_paquete';

@@ -52,7 +52,11 @@ class UsuariosController
     return true;
   }
 
-  public function getRol(){    
+  public function getUser () {
+    return $this->modelo->getUser($_SESSION['USER']);
+  }
+
+  public function getRol(){
     $rol=$this->modelo->getRol($_SESSION['USER']);
     return $rol;
   }

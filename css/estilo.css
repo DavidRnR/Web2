@@ -127,10 +127,9 @@ label{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.cargadorComentarios {
-  overflow: scroll;
+.inputComentario {
+  width: 250%;
 }
-
 .backformturnos{
   margin-top: 5%;
   background-color: white;

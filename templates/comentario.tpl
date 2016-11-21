@@ -11,25 +11,30 @@
   </div>
 </div>
 
+{if $usuario['fk_rol']>0}
+<div class="row">
+  <form class="form-inline ajaxForm"  href="api/comentario" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="Usuario">{$usuario['nombre']}</label>
+      <input type="hidden" class="form-control" name="id_paquete" value="{$paquete['id_paquete']}">
+    </div>
+    <div class="form-group">
+      <input type="hidden" class="form-control" name="email" value="{$usuario['email']}">
+    </div>
+    <div class="form-group">
+      <input type="text" name="comentario" class="form-control" placeholder="Escriba aquí su Comentario...">
+    </div>
+    <div class="form-group">
+      {include file="rating.tpl"}
+    </div>
+
+    <button type="submit" class="btn btn-default">Comentar</button>
+  </form>
+</div>
+{/if}
+
 <div class="row">
   <div class="cargadorComentarios">
 
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-3">
-    <form class="form-inline ajaxForm" href="api/comentario" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="id_paquete" value="{$paquete['id_paquete']}" />
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" class="form-control" placeholder="ejemplo@exa.com">
-      </div>
-      <div class="form-group">
-        <label for="comentario">Comentar</label>
-        <input type="text" name="comentario" class="form-control" placeholder="Escriba aquí">
-      </div>
-      <button type="submit" class="btn btn-default">Comentar</button>
-    </form>
   </div>
 </div>

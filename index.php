@@ -12,7 +12,6 @@ require('config/ConfigApp.php');
 $presupuestoController = new PresupuestoController();
 $contactoController = new ContactoController();
 $turnosController = new TurnosController();
-$paquetesController = new PaquetesController();
 $usuariosController = new UsuariosController();
 
 
@@ -25,6 +24,7 @@ if (!array_key_exists(ConfigApp::$ACTION,$_REQUEST)){
 
 switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_MOSTRAR_PAQUETES:
+  $paquetesController = new PaquetesController($usuariosController);
   $paquetesController->mostrarPaquetes();
   break;
   case ConfigApp::$ACTION_MOSTRAR_PRESUPUESTO:
@@ -60,10 +60,8 @@ switch ($_REQUEST[ConfigApp::$ACTION]) {
   case ConfigApp::$ACTION_GUARDAR_TURNO:
   $turnosController->guardarTurno();
   break;
-  case ConfigApp::$ACTION_MOSTRAR_PAQUETE:
-  $paquetesController->mostrarPaquetes();
-  break;
   case ConfigApp::$ACTION_PAQUETE_COMENTARIO:
+  $paquetesController = new PaquetesController($usuariosController);
   $paquetesController->mostrarBoxComentario();
   break;
   case ConfigApp::$ACTION_AGREGAR_PAQUETE:

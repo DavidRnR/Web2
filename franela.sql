@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2016 a las 00:43:08
+-- Tiempo de generación: 21-11-2016 a las 05:52:37
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `comentario` (
   `id_comentario` int(11) NOT NULL,
   `mensaje` text NOT NULL,
+  `rating` tinyint(4) NOT NULL DEFAULT '0',
   `fk_paquete` int(11) NOT NULL,
   `fk_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -37,8 +38,10 @@ CREATE TABLE `comentario` (
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO `comentario` (`id_comentario`, `mensaje`, `fk_paquete`, `fk_usuario`) VALUES
-(3, 'Como estas Marcelo?', 2, 1);
+INSERT INTO `comentario` (`id_comentario`, `mensaje`, `rating`, `fk_paquete`, `fk_usuario`) VALUES
+(13, 'Bastante bien', 3, 2, 1),
+(14, 'Bastante bien está', 3, 3, 1),
+(15, 'Podrían mejorar eh! Mortadelas!', 4, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -56,32 +59,11 @@ CREATE TABLE `imagen` (
 --
 
 INSERT INTO `imagen` (`path`, `fk_id_turno`) VALUES
-('images/57fbfb7ba510c_20160720_130405.jpg', 37),
-('images/57fbfe63d8c09_14045580_1459555067394647_518', 38),
-('images/57fbfe85eefa8_', 39),
-('images/57fbfecc33db2_', 40),
-('images/57fbffdbb2b86_', 41),
-('images/57fc0c3f3a95b_20160720_130405.jpg', 42),
-('images/57fc0c5b25c40_IMG-20161004-WA0001.jpg', 43),
-('images/57fc10ae14296_', 44),
-('images/57fc10d9867dc_', 45),
-('images/580260437108f_20160812_173034.jpg', 46),
-('images/58026043792e9_20160819_123529.jpg', 46),
-('images/580264c8a4f27_20160820_122050.jpg', 47),
-('images/5803f07272ec0_limpieza.png', 48),
-('images/5803f3d02b7d5_Sintitulo.png', 49),
-('images/5803f4025610a_Sintitulo.png', 50),
-('images/580401017cb46_Sintitulo.png', 1),
-('images/580405303f7bb_Sintitulo.png', 2),
-('images/5804056e233f1_home-photo1.jpg', 3),
-('images/5804062e899d2_Sintitulo.png', 4),
-('images/580407473cb1d_Sintitulo.png', 5),
-('images/5804075281b28_Sintitulo.png', 6),
-('images/58040957c1389_Sintitulo.png', 10),
-('images/58040ff7bd2e7_home-photo1.jpg', 12),
-('images/58040ff7c4274_limpieza.png', 12),
-('images/5804114e57a39_home-photo1.jpg', 13),
-('images/5804114e7b681_limpieza.png', 13);
+('images/58325c28980fe_home-photo1.jpg', 5),
+('images/58325c28a57e5_limpieza.png', 5),
+('images/58325c43b6f18_home-photo1.jpg', 6),
+('images/58325c43c5a6b_limpieza.png', 6),
+('images/58325c43cf50b_Sintitulo.png', 6);
 
 -- --------------------------------------------------------
 
@@ -156,8 +138,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `fk_rol`) VALUES
-(1, '', 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 1),
-(3, 'Deivid', 'cdm@yes.com', '$2y$10$B0NJsbUV2RqkQbzHc98dk.WTLUF70uiNbsTA3y4v.gsnt68dhOM/C', 2),
+(1, 'Administrador', 'franela@franela.com', '$2y$10$eDAq0jftfGpeW0CoYt6IpejgeXvRooyIWmH1EA/Dnm4MeK0ijh0RG', 1),
+(3, 'Deivid', 'cdm@yes.com', '$2y$10$B0NJsbUV2RqkQbzHc98dk.WTLUF70uiNbsTA3y4v.gsnt68dhOM/C', 1),
 (4, 'Ram', 'ram@pc.com', '$2y$10$MFMtnHFzAKOiSwWnRyu5L.pC1F4jJ93US1Y8BqI7H1T17C65uFCWS', 2);
 
 --
@@ -203,7 +185,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `paquete`
 --
@@ -218,7 +200,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_turno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

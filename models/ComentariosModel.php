@@ -56,10 +56,10 @@ class ComentariosModel extends FranelaModel {
     return $comentario;
   }
 
-  function crearComentario($id_paquete,$usuario,$comentario) {
+  function crearComentario($id_paquete,$usuario,$comentario,$rating) {
     $id_usuario = $this->modeloUsuario->getUser($usuario)['id_usuario'];
-    $sentencia = $this->db->prepare("INSERT INTO comentario(mensaje,fk_paquete,fk_usuario) VALUES(?,?,?)");
-    $sentencia->execute(array($comentario,$id_paquete,$id_usuario));
+    $sentencia = $this->db->prepare("INSERT INTO comentario(mensaje,rating,fk_paquete,fk_usuario) VALUES(?,?,?,?)");
+    $sentencia->execute(array($comentario,$rating,$id_paquete,$id_usuario));
     $id_comentario = $this->db->lastInsertId();
     return $id_comentario;
   }

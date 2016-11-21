@@ -88,6 +88,8 @@ $(document).ready(function(){
     event.preventDefault();
     var id = $(this).attr("data-idpaquete");
     $.get("paquete_comentario",{id_paquete: id},function(data) {
+      $('footer').hide();
+      $("#cargadorAjax").removeClass("fondo");
       $('#cargadorAjax').html(data);
       getComentariosPack(id);
     });
@@ -95,6 +97,7 @@ $(document).ready(function(){
 
   function getComentariosPack (idpaquete) {
     $.get( "api/comentario/"+idpaquete, function(data) {
+      if(!data['Error'])
       crearComentarios(data);
     });
   }
@@ -118,6 +121,7 @@ $(document).ready(function(){
   function crearComentario (data){
     var rendered = Mustache.render(templateComentario,{comentarios: [data]});
     $('.cargadorComentarios').append(rendered);
+    $("input[name*='comentario']").val("");
   }
 
   var templateComentario;
@@ -153,6 +157,8 @@ $(document).on("submit",'.registro', function () {
 
 $(document).on("click",'.btnAdmin', function(){
   event.preventDefault();
+  $(".btnAdmin").removeClass("active");
+  $(this).addClass("active");
   var valor = $(this).attr("value");
 
   if (valor=="comentarios") {
@@ -167,22 +173,22 @@ $(document).on("click",'.btnAdmin', function(){
 
 
 $(document).on('click','.eliminarComentario', function () {
-    var idComentario = $(this).attr("data-idcomentario");
-    deleteComentario(idComentario);
-    $(this).parents('tr').remove();
-  });
-
-  function deleteComentario (idComentario) {
-    $.ajax ({
-      url: "api/comentario/"+idComentario,
-      method:"DELETE",
-      contentType: "application/json; charset=utf-8",
-      success:function (){},
-      error:function(jqxml, status, errorThrown){
-        console.log(errorThrown);
+  var idComentario = $(this).attr("data-idcomentario");
+  $.ajax ({
+    url: "api/comentario/"+idComentario,
+    method:"DELETE",
+    contentType: "application/json; charset=utf-8",
+    success:function (data){
+      if (data['Success']) {
+        $('.cargadorAdmin').html(getComentarios());
       }
-    });
-  }
+      else console.log(data['Error']);
+    },
+    error:function(jqxml, status, errorThrown){
+      console.log(errorThrown);
+    }
+  });
+});
 
 $(document).on("click",'.cambioRol', function(){
   event.preventDefault();
@@ -192,12 +198,6 @@ $(document).on("click",'.cambioRol', function(){
     $('#cargadorAjax').html(data);
   });
 });
-
-function recargar () {
-  $.get( 'index.php',function(data) {
-
-});
-}
 
 $(document).on('submit','.ajaxForm', function(){
   getForm(this);
@@ -218,7 +218,7 @@ function getForm (datos) {
       switch (dir) {
         case "mostrar_login":
         $("body").html(data);
-        break;        
+        break;
         case "listar_turnos":
         $("#contenedorTurnos").html(data);
         break;
@@ -242,6 +242,9 @@ function getInfo(link) {
     dataType: "html",
     success: function(resultData){
       switch (link) {
+        case "logout_login":
+        $("body").html(resultData);
+        break;
         case "quienessomos.html":
         $("#cargadorAjax").removeClass("fondo");
         $('footer').show();

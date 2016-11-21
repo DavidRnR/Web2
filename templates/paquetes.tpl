@@ -2,7 +2,7 @@
   <h2 class="package" >Solicite el Pack acorde a sus necesidades <span class="label label-default">New</span></h2>
 
   <div class="backformturnos">
-    <form class="ajaxForm" href="index.php?action=guardar_turno" method="post" enctype="multipart/form-data">
+    <form class="ajaxForm" href="guardar_turno" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-2 col-md-offset-1">
           <input type="text" name="cliente" value="" placeholder="Ingrese su nombre" required>

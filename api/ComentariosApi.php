@@ -16,7 +16,7 @@ class ComentariosApi extends Api {
       case 'GET':
         if(count($argumentos)>0){
             $comentario = $this->modelo->getComentariosPaquete($argumentos[0]);
-            $error['Error'] = "Ese contacto no existe";
+            $error['Error'] = "No exiten comentarios";
             return ($comentario) ? $comentario : $error;
           }else{
             return $this->modelo->getComentarios();
@@ -34,9 +34,10 @@ class ComentariosApi extends Api {
       if(count($argumentos)==0){
         $id_paquete = $_POST['id_paquete'];
         $usuario = $_POST['email'];
+        $rating = $_POST['rating'];
         $comentario = $_POST['comentario'];
         $error['Error'] = "El comentario no se creo";
-        $id_comentario = $this->modelo->crearComentario($id_paquete,$usuario,$comentario);
+        $id_comentario = $this->modelo->crearComentario($id_paquete,$usuario,$comentario,$rating);
         return ($id_comentario > 0) ? $this->modelo->getComentario($id_comentario) : $error;
       }
       break;

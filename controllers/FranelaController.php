@@ -6,19 +6,19 @@ define ("INVITADO",0);
 class FranelaController
 {
   private $vista;
-  private $rol;
+  private $usuario;
 
   function __construct($usuariosController)
   {
     $this->vista = new FranelaView();
-    $this->rol=INVITADO;    
+    $this->usuario['fk_rol']=INVITADO;
     if($usuariosController->checkLogin()){
-      $this->rol=$usuariosController->getRol();
+      $this->usuario=$usuariosController->getUser();
     }
   }
 
   function iniciar () {
-    $this->vista->mostrar($this->rol);
+      $this->vista->mostrar($this->usuario);
   }
 
 }
