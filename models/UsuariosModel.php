@@ -9,9 +9,9 @@ class UsuariosModel extends FranelaModel
     return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function getUser($user){
+  function getUser($userEmail){
     $sentencia = $this->db->prepare( "select * from usuario where email=?");
-    $sentencia->execute(array($user));
+    $sentencia->execute(array($userEmail));
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 

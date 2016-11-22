@@ -100,13 +100,20 @@ h6 {
   font-family: sans-serif;
   font-style: normal;
 }
-
+.turnoGuardado {
+  margin-top: 20%;
+}
+.turnoGuardado >h2 {
+    text-align: center;
+}
 .formulario {
   margin-top: 3%;
 }
+.loginForm >strong, form >h2, label {
+  color: white;
+}
 
 label{
-  color: white;
   font-size: 25px;
 }
 

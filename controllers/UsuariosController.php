@@ -1,6 +1,6 @@
 <?php
-require_once('views/UsuariosView.php');
-require_once('models/UsuariosModel.php');
+include_once (dirname(__DIR__). "/views/UsuariosView.php");
+include_once(dirname(__DIR__). "/models/UsuariosModel.php");
 
 class UsuariosController
 {
@@ -57,6 +57,7 @@ class UsuariosController
   }
 
   public function getRol(){
+    session_start();
     $rol=$this->modelo->getRol($_SESSION['USER']);
     return $rol;
   }

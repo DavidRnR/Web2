@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-4 col-md-offset-4 loginForm">
   <form class="form-signin ajaxForm" href="login" method="post" enctype="multipart/form-data">
     <h2 class="form-signin-heading">Ingresar</h2>
     <div class="form-group">
@@ -8,11 +8,6 @@
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Contraseña</label>
       <input type="password" name="password" class="form-control" placeholder="Contraseña" required="">
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Recordarme
-      </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
   </form>
