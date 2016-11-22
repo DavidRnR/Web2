@@ -92,6 +92,8 @@ $(document).ready(function(){
     });
   });
 
+  var temporizador;
+  StopTemporizador();
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
     var id = $(this).attr("data-idpaquete");
@@ -99,23 +101,22 @@ $(document).ready(function(){
       $('footer').hide();
       $("#cargadorAjax").removeClass("fondo");
       $('#cargadorAjax').html(data);
-      getComentariosPack(id);
-      refreshComentarios(id);
+      temporizador = setInterval(function() {getComentariosPack(id)}, 2000);
     });
   });
 
-  function refreshComentarios (id) {
-    setInterval(function(){
-      getComentariosPack(id); // Se ejecutará cada 2seg
-    }, 2000);
+  function StopTemporizador() {
+        clearInterval(temporizador);
   }
 
+
   function getComentariosPack (idpaquete) {
-    $.get( "api/comentario/"+idpaquete, function(data) {
-      if(!data['Error'])
-      crearComentarios(data);
-    });
-  }
+      $.get( "api/comentario/"+idpaquete, function(data) {
+        if(!data['Error'])
+        crearComentarios(data);
+      });
+      console.log("hola");
+    }
 
   function getComentarios () {
     $.get( "api/comentario", function(data) {

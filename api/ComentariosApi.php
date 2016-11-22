@@ -1,7 +1,6 @@
 <?php
 require_once 'api.php';
 require_once ('../models/ComentariosModel.php');
-//require_once ('../controllers/UsuariosController.php');
 
 class ComentariosApi extends Api {
   private $modelo;
@@ -24,7 +23,7 @@ class ComentariosApi extends Api {
           }
       break;
        case 'DELETE':
-      if(count($argumentos)>0){
+        if(count($argumentos)>0){
         $error['Error'] = "El comentario no existe";
         $success['Success'] = "El comentario se ha borrado";
         $filasAfectadas = $this->modelo->eliminarComentario($argumentos[0]);
