@@ -88,7 +88,6 @@ $(document).ready(function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();
     $.get( "eliminar_imagen",{imgpath: $(this).attr("data-imgpath"), paqueteSel: dropdown}, function(data) {
-      console.log(data);
       $('#contenedorTurnos').html(data);
     });
   });
@@ -101,8 +100,15 @@ $(document).ready(function(){
       $("#cargadorAjax").removeClass("fondo");
       $('#cargadorAjax').html(data);
       getComentariosPack(id);
+      refreshComentarios(id);
     });
   });
+
+  function refreshComentarios (id) {
+    setInterval(function(){
+      getComentariosPack(id); // Se ejecutará cada 2seg
+    }, 2000);
+  }
 
   function getComentariosPack (idpaquete) {
     $.get( "api/comentario/"+idpaquete, function(data) {
@@ -188,7 +194,7 @@ $(document).on('click','.eliminarComentario', function () {
     method:"DELETE",
     contentType: "application/json; charset=utf-8",
     success:function (data){
-        if (data['Success']) {
+      if (data['Success']) {
         $('.cargadorAdmin').html(getComentarios());
       }
       else console.log(data['Error']);

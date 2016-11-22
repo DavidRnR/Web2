@@ -13,7 +13,7 @@
 
 {if $usuario['fk_rol']>0}
 <div class="row">
-  <div class="col-md-11 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <form class="form-horizontal ajaxForm"  href="api/comentario" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <input type="hidden" class="form-control" name="id_paquete" value="{$paquete['id_paquete']}">
@@ -27,7 +27,9 @@
       <div class="form-group">
         {include file="rating.tpl"}
       </div>
-      <button type="submit" class="btn btn-default">Comentar</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg"><strong>Comentar</strong></button>
+      </div>
     </form>
   </div>
 </div>

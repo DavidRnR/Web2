@@ -1,6 +1,7 @@
 <?php
 require_once 'api.php';
 require_once ('../models/ComentariosModel.php');
+//require_once ('../controllers/UsuariosController.php');
 
 class ComentariosApi extends Api {
   private $modelo;
@@ -43,7 +44,7 @@ class ComentariosApi extends Api {
             $error['Error'] = "El comentario no se creo";
             $id_comentario = $this->modelo->crearComentario($id_paquete,$usuario,$comentario,$rating);
             return ($id_comentario > 0) ? $this->modelo->getComentario($id_comentario) : $error;
-        }        
+        }
       }
       break;
       default:
