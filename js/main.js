@@ -79,7 +79,7 @@ $(document).ready(function(){
   $(document).on("click",'.eliminarTurno', function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();
-    $.get( "eliminar_turno",{id_turno: $(this).attr("data-idturno"), paqueteSel: dropdown}, function(data) {
+    $.post( "eliminar_turno",{id_turno: $(this).attr("data-idturno"), paqueteSel: dropdown}, function(data) {
       $('#contenedorTurnos').html(data);
     });
   });
@@ -87,13 +87,13 @@ $(document).ready(function(){
   $(document).on("click",'.eliminarImagen', function(){
     event.preventDefault();
     var dropdown = $('#dropdownPaquete option:selected').val();
-    $.get( "eliminar_imagen",{imgpath: $(this).attr("data-imgpath"), paqueteSel: dropdown}, function(data) {
+    $.post( "eliminar_imagen",{imgpath: $(this).attr("data-imgpath"), paqueteSel: dropdown}, function(data) {
       $('#contenedorTurnos').html(data);
     });
   });
 
   var temporizador;
-  StopTemporizador();
+  $(document).on("click",'.navegadora',StopTemporizador);
   $(document).on("click",'.packComentario', function(){
     event.preventDefault();
     var id = $(this).attr("data-idpaquete");
@@ -101,6 +101,7 @@ $(document).ready(function(){
       $('footer').hide();
       $("#cargadorAjax").removeClass("fondo");
       $('#cargadorAjax').html(data);
+      getComentariosPack(id);
       temporizador = setInterval(function() {getComentariosPack(id)}, 2000);
     });
   });
@@ -115,7 +116,6 @@ $(document).ready(function(){
         if(!data['Error'])
         crearComentarios(data);
       });
-      console.log("hola");
     }
 
   function getComentarios () {
@@ -157,7 +157,7 @@ success: function(templateReceived) {
 $(document).on("click",'.turnoFinalizado', function(){
   event.preventDefault();
   var dropdown = $('#dropdownPaquete option:selected').val();
-  $.get( "finalizar_turno/"+$(this).attr("data-idturno"),{paqueteSel: dropdown}, function(data) {
+  $.post( "finalizar_turno",{id_turno: $(this).attr("data-idturno"),paqueteSel: dropdown}, function(data) {
     $('#contenedorTurnos').html(data);
   });
 });
@@ -210,7 +210,7 @@ $(document).on("click",'.cambioRol', function(){
   event.preventDefault();
   var idusuario = $(this).attr("data-idusuario");
 
-  $.get( "cambiar_rol",{id_usuario: idusuario}, function(data) {
+  $.post( "cambiar_rol",{id_usuario: idusuario}, function(data) {
     $('#cargadorAjax').html(data);
   });
 });

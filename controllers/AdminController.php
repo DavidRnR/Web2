@@ -67,15 +67,15 @@ class AdminController
       $paquete =  $_POST['paquete'];
     }
     else {
-      $paquete = $_GET['paqueteSel'];
+      $paquete = $_POST['paqueteSel'];
     }
     $turnos= $this->modelo->getTurnos($paquete);
     $this->vista->listarTurnos($turnos);
   }
 
   function eliminarTurno(){
-    if(isset($_GET['id_turno'])) {
-      $id_turno = $_GET['id_turno'];
+    if(isset($_POST['id_turno'])) {
+      $id_turno = $_POST['id_turno'];
       $paquete = $this->modelo->getidPaquete($id_turno);
       $this->modelo->eliminarTurno($id_turno);
       $this->listarTurnos();
@@ -83,24 +83,24 @@ class AdminController
   }
 
   function eliminarImagen() {
-    if(isset($_GET['imgpath'])) {
-      $this->modelo->eliminarImagen($_GET['imgpath']);
+    if(isset($_POST['imgpath'])) {
+      $this->modelo->eliminarImagen($_POST['imgpath']);
       $this->listarTurnos();
     }
   }
 
   function finalizarTurno(){;
-    if(isset($_GET['id_turno'])) {
-      $id_turno = $_GET['id_turno'];
+    if(isset($_POST['id_turno'])) {
+      $id_turno = $_POST['id_turno'];
       $this->modelo->toogleTurno($id_turno);
       $this->listarTurnos();
     }
   }
 
   function cambiarRol () {
-    if(isset($_GET['id_usuario'])) {
+    if(isset($_POST['id_usuario'])) {
       $usuariosModel = new UsuariosModel();
-      $usuario = $usuariosModel->cambiarRol($_GET['id_usuario']);
+      $usuario = $usuariosModel->cambiarRol($_POST['id_usuario']);
       $this->mostrarUsuarios();
     }
   }
