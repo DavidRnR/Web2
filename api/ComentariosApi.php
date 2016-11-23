@@ -63,11 +63,5 @@ class ComentariosApi extends Api {
       break;
     }
   }
-
-
-
-
 }
-
-
 ?>

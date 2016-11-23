@@ -39,8 +39,8 @@ class UsuariosController
   public function checkRol ($rol) {
     session_start();
     if(!isset($_SESSION['USER']) || $rol != $this->modelo->getRol($_SESSION['USER'])){
-        header("Location: index.php");
-        die();
+      header("Location: index.php");
+      die();
     }
   }
 
@@ -70,7 +70,7 @@ class UsuariosController
   }
 
   public function mostrarRegistro () {
-      $this->vista->mostrarRegistro();
+    $this->vista->mostrarRegistro();
   }
 
   public function nuevoUsuario () {
@@ -88,7 +88,5 @@ class UsuariosController
       }
     }
   }
-
 }
-
 ?>

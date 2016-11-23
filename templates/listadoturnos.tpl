@@ -18,7 +18,7 @@
         <div class="row">
           {foreach from=$turno['imagenesturno'] key=index item=imagen}
           <div class="col-md-3 col-xs-6">
-            <a href="{$imagen['path']}" class="thumbnail">
+            <a href="{$imagen['path']}" target="_blank" class="thumbnail">
               <img data-u="image" src="{$imagen['path']}" alt="TurnoImagen_{$turno['cliente']}_{$imagen['fk_id_turno']}"  class="thumbnail img-rounded" >
             </a>
             <button class="btn btn-danger btn-xs eliminarImagen" type="button" data-imgpath="{$imagen['path']}">Eliminar</button>

@@ -108,16 +108,16 @@ $(document).ready(function(){
   });
 
   function StopTemporizador() {
-        clearInterval(temporizador);
+    clearInterval(temporizador);
   }
 
 
   function getComentariosPack (idpaquete) {
-      $.get( "api/comentario/"+idpaquete, function(data) {
-        if(!data['Error'])
-        crearComentarios(data);
-      });
-    }
+    $.get( "api/comentario/"+idpaquete, function(data) {
+      if(!data['Error'])
+      crearComentarios(data);
+    });
+  }
 
   function getComentarios () {
     $.get( "api/comentario", function(data) {

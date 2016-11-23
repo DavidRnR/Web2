@@ -11,10 +11,9 @@ class TurnosView
     $this->smarty = new Smarty();
 
   }
-    
+
   function turnoGuardado(){
     $this->smarty->display('turnoGuardado.tpl');
   }
 }
-
 ?>

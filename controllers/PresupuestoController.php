@@ -9,11 +9,9 @@ class  PresupuestoController
   {
     $this->vista = new PresupuestoView();
   }
-
+  
   function mostrar(){
     $this->vista->mostrar();
-
   }
 }
-
- ?>
+?>

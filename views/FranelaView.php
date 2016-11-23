@@ -14,5 +14,4 @@ class FranelaView
     $this->smarty->display('index.tpl');
   }
 }
-
- ?>
+?>

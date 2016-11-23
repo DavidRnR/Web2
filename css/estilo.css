@@ -9,7 +9,6 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f3b08', endColorstr='#627d4d', GradientType=1 );
 }
 
-
 #derecho{
   height: 100%;
   background: white;
@@ -81,7 +80,8 @@ footer {
 
 .fondo{
   margin-top:5%;
-  height: 500px;
+  min-height: 500px;
+  height: auto;
   background-image: url("images/piso.jpg");
   background-repeat:repeat;
 }
@@ -151,12 +151,14 @@ label{
 
 a {
   color: inherit;
+  font-weight: bold;
 }
 .inputComentario {
   width: 60px;
 }
 .backformturnos{
-  margin-top: 5%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   background-color: white;
 }
 

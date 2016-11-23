@@ -45,6 +45,5 @@ class TurnosController
       $this->vista->turnoGuardado();
     }
   }
-
 }
 ?>

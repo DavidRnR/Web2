@@ -34,9 +34,7 @@
   </div>
 </div>
 {/if}
-
 <div class="row">
   <div class="cargadorComentarios">
-
   </div>
 </div>

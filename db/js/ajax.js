@@ -4,5 +4,4 @@ $(".database").submit(function(ev) {
     console.log(data);
     $(".errors").html(data).hide().show("slow");
   });
-
 });

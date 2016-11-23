@@ -17,12 +17,11 @@ class PaquetesView
     $this->smarty->assign('usuario',$usuario);
     $this->smarty->display('paquetes.tpl');
   }
-
+  
   function mostrarBoxComentario ($paquete,$usuario) {
     $this->smarty->assign('usuario',$usuario);
     $this->smarty->assign('paquete',$paquete);
     $this->smarty->display('comentario.tpl');
   }
 }
-
 ?>

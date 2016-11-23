@@ -19,5 +19,5 @@ class ConfigApp{
   public static $ACTION_ELIMINAR_IMAGEN = 'eliminar_imagen';
   public static $ACTION_FINALIZAR_TURNO = 'finalizar_turno';
   public static $ACTION_LISTAR_TURNOS = 'listar_turnos';
-  }
- ?>
+}
+?>

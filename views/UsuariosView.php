@@ -22,9 +22,5 @@ class UsuariosView
     $this->smarty->assign('usuario',$usuario);
     $this->smarty->display('usuarioRegistrado.tpl');
   }
-
 }
-
-
-
- ?>
+?>

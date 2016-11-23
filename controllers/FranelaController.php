@@ -18,9 +18,7 @@ class FranelaController
   }
 
   function iniciar () {
-      $this->vista->mostrar($this->usuario);
+    $this->vista->mostrar($this->usuario);
   }
-
 }
-
 ?>

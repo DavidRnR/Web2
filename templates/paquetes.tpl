@@ -34,7 +34,7 @@
   {else}
   <div class="row">
     <div class="col-md-2 col-md-offset-5 col-xs-2 col-xs-offset-5" >
-        <button type="button" class="btn btn-info btn-lg btnReg">Registrarse</button>
+      <button type="button" class="btn btn-info btn-lg btnReg">Registrarse</button>
     </div>
   </div>
 
@@ -45,16 +45,16 @@
 <div class="row paquetes">
   {foreach from=$paquetes key=index item=$paquete}
   <a class="packComentario" href=# data-idpaquete="{$paquete['id_paquete']}">
-  <div class="col-md-4 col-xs-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <h3>{$paquete['paquete']}</h3>
-      </div>
-      <div class="panel-footer">
-        <p><strong>{$paquete['detalle_pack']}</strong></p>
+    <div class="col-md-4 col-xs-4">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <h3>{$paquete['paquete']}</h3>
+        </div>
+        <div class="panel-footer">
+          <p><strong>{$paquete['detalle_pack']}</strong></p>
+        </div>
       </div>
     </div>
-  </div>
   </a>
   {/foreach}
 </div>

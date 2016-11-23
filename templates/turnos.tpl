@@ -3,6 +3,6 @@
   <ul>
     <li>{$turno['cliente']}</li>
     <li>{$turno['turno']}</li>
-    </ul>
+  </ul>
   {/foreach}
 </ul>

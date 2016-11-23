@@ -4,11 +4,11 @@ require_once('libs/Smarty.class.php');
 
 class ContactoView
 {
-private $smarty;
+  private $smarty;
 
   function __construct(){
 
-  $this->smarty = new Smarty();
+    $this->smarty = new Smarty();
 
   }
 
@@ -16,6 +16,4 @@ private $smarty;
     $this->smarty->display('contacto.tpl');
   }
 }
-
-
- ?>
+?>
