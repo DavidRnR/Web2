@@ -1,4 +1,5 @@
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,16 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="blank  pace-done">
-<div class="wrapper">
+<div class="wrapper background">
     <section class="content">
         <div class="container-center lg animated slideInDown">
             <div class="view-header">
                 <div class="header-title">
-                    <h3>Instalación de la base de datos</h3>
+                    <h3>Instale su base de datos</h3>
                 </div>
             </div>
 
-            <div class="panel panel-filled">
+            <div class="panel-filled">
                 <div class="panel-body">
                     <form class="database" method="post">
                         <div class="row">

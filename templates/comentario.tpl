@@ -1,5 +1,5 @@
 <div class="row paquetes">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
     <div class="panel panel-primary">
       <div class="panel-body">
         <h3>{$paquete['paquete']}</h3>
@@ -13,7 +13,7 @@
 
 {if $usuario['fk_rol']>0}
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
     <form class="form-horizontal ajaxForm"  href="api/comentario" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <input type="hidden" class="form-control" name="id_paquete" value="{$paquete['id_paquete']}">

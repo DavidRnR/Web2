@@ -35,8 +35,13 @@ class UsuariosModel extends FranelaModel
     else {
       $sentencia->execute(array(1,$id_usuario));
     }
-
   }
+
+  function eliminarUsuario ($id_usuario) {
+    $sentencia = $this->db->prepare("delete from usuario where id_usuario=?");
+    $sentencia->execute(array($id_usuario));
+  }
+
   function getRol ($user) {
     $usuario = $this->getUser($user);
     return $usuario['fk_rol'];

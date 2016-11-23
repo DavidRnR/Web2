@@ -16,12 +16,12 @@ class PaquetesController
     $this->modelo = new PaquetesModel();
     if($usuariosController->checkLogin()){
       $this->usuario=$usuariosController->getUser();
-    }
+    }    
   }
 
   function mostrarPaquetes () {
     $paquetes = $this->modelo->getPaquetes();
-    $this->vista->mostrarPaquetes($paquetes);
+    $this->vista->mostrarPaquetes($paquetes,$this->usuario);
   }
 
   function mostrarBoxComentario () {

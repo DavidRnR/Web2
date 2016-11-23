@@ -10,12 +10,16 @@ class AdminController
 {
   private $vista;
   private $modelo;
+  private $modeloUsuarios;
+  private $adminActivo;
 
   function __construct($usuariosController)
   {
     $this->vista = new AdminView();
     $this->modelo = new TurnosModel();
+    $this->modeloUsuarios = new UsuariosModel();
     $usuariosController->checkRol(1);
+    $this->adminActivo = $usuariosController->getUser();
   }
 
   function mostrar () {
@@ -35,8 +39,7 @@ class AdminController
   }
 
   function mostrarUsuarios () {
-    $usuariosModel = new UsuariosModel();
-    $this->vista->mostrarUsuarios($usuariosModel->getUsuarios());
+    $this->vista->mostrarUsuarios($this->modeloUsuarios->getUsuarios(),$this->adminActivo);
   }
 
   function mostrarPaquetes () {
@@ -99,8 +102,14 @@ class AdminController
 
   function cambiarRol () {
     if(isset($_POST['id_usuario'])) {
-      $usuariosModel = new UsuariosModel();
-      $usuario = $usuariosModel->cambiarRol($_POST['id_usuario']);
+      $this->modeloUsuarios->cambiarRol($_POST['id_usuario']);
+      $this->mostrarUsuarios();
+    }
+  }
+
+  function eliminarUsuario() {
+    if(isset($_POST['id_usuario'])) {
+      $this->modeloUsuarios->eliminarUsuario($_POST['id_usuario']);
       $this->mostrarUsuarios();
     }
   }

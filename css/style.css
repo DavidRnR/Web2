@@ -288,6 +288,7 @@ fieldset[disabled] .btn-primary.focus {
     box-shadow: none;
 }
 
+
 .btn-success:active,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
@@ -1044,6 +1045,7 @@ body.nav-toggle .navigation:before {
 
 body.blank .content {
     margin: 0;
+    background-color: white;
 }
 
 .container-center {
@@ -1530,6 +1532,7 @@ sup {
 
 .panel.panel-filled {
     background-color: rgba(68, 70, 79, 0.5);
+
 }
 
 .view-header {
@@ -1553,6 +1556,7 @@ sup {
 
 .view-header .header-title h3 {
     margin-bottom: 2px;
+    color: orange;
 }
 
 .panel.collapsed .panel-body,
@@ -2487,15 +2491,15 @@ div.dt-button-info h2 {
 }
 
 .form-control {
-    color: #949ba2;
-    border: none;
+    color: white;
+    border: bold;
     border-radius: 4px;
     -webkit-box-shadow: none;
     box-shadow: none;
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
-    background-color: #494b54;
+    background-color: orange;
 }
 
 .form-control:focus {
@@ -2647,4 +2651,13 @@ fieldset[disabled] .form-control {
 }
 .img-thumbnail{
      border: 0;
+}
+
+label{
+  color: black;
+  font-weight: bold;
+}
+
+input{
+  background-color: yellow;
 }

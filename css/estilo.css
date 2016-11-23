@@ -45,10 +45,18 @@ h1{
   text-shadow: -5px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-footer {
-  clear:both;
-  position: relative;
+.panel-body> h3{
+  color: black;
+  text-shadow: -2px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
+  text-align: center;
+  font-size: 25px;
 }
+
+h4{
+  color:red;
+  font-size: 25px;
+}
+
 h5  {
   text-align: center;
   font-weight: bold;
@@ -61,6 +69,10 @@ h6 {
   font-weight: bold;
 }
 
+footer {
+  clear:both;
+  position: relative;
+}
 
 .facebookicono {
   width: 20px;
@@ -137,6 +149,9 @@ label{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+a {
+  color: inherit;
+}
 .inputComentario {
   width: 60px;
 }
@@ -174,8 +189,16 @@ th{
   height: 351px;
 }
 
+.panelbase{
+  color: red;
+}
+
 .listadoImagenes {
   width: 200px;
   height: 100px;
   display: inline-flex;
+}
+
+.btnReg{
+  margin-bottom: 10%;
 }

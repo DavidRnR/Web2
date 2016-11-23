@@ -1,4 +1,4 @@
-<div class="col-4-md">
+<div class="col-4-md col-4-xs">
   <label class="labelAdmin"><h6>Listar Turnos por Pack</h6></label>
   <form class="ajaxForm" id="dropdownPaquete" href="listar_turnos" method="post" enctype="multipart/form-data">
     <select name="paquete">
@@ -11,7 +11,7 @@
   </form>
 </div>
 
-<div class="col-4-md">
+<div class="col-4-md col-4-xs">
   <label class="labelAdmin"><h6>Eliminar Pack</h6></label>
   <form class="ajaxForm" href="eliminar_paquete" method="post" enctype="multipart/form-data">
     <select name="paquete">
@@ -23,7 +23,7 @@
   </form>
 </div>
 
-<div class="col-4-md">
+<div class="col-4-md col-4-xs">
   <label class="labelAdmin"><h6>Agregar Pack</h6></label>
   <form class="ajaxForm" href="agregar_paquete" method="post" enctype="multipart/form-data">
     <input type="text" name="nombrePaquete" placeholder="Nombre del Pack" value="">
@@ -33,10 +33,10 @@
 </div>
 
 <div class="row">
-  <div class="col-5-md" id="contenedorTurnos">
+  <div class="col-5-md col-5-xs" id="contenedorTurnos">
 
   </div>
-  <div class="col-5-md" id="contenedorImagenes">
+  <div class="col-5-md col-5-xs" id="contenedorImagenes">
 
   </div>
 

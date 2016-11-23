@@ -53,6 +53,7 @@ $(document).ready(function(){
   }
 
   $(document).on("click",'#registro', getLinkRegistro);
+  $(document).on("click",'.btnReg', getLinkRegistro);
 
   function getLinkRegistro(event){
     event.preventDefault();
@@ -134,12 +135,6 @@ $(document).ready(function(){
     $('.cargadorComentarios').html(rendered);
   }
 
-  function crearComentario (data){
-    var rendered = Mustache.render(templateComentario,{comentarios: [data]});
-    $('.cargadorComentarios').append(rendered);
-    $("input[name*='comentario']").val("");
-  }
-
   var templateComentario;
   $.ajax({ url: 'js/templates/comentario.mst',
   success: function(templateReceived) {
@@ -215,6 +210,15 @@ $(document).on("click",'.cambioRol', function(){
   });
 });
 
+$(document).on("click",'.eliminarUsuario', function(){
+  event.preventDefault();
+  var idusuario = $(this).attr("data-idusuario");
+
+  $.post( "eliminar_usuario",{id_usuario: idusuario}, function(data) {
+    $('#cargadorAjax').html(data);
+  });
+});
+
 $(document).on('submit','.ajaxForm', function(){
   getForm(this);
 });
@@ -247,7 +251,6 @@ function getForm (datos) {
         $("#cargadorAjax").html(data);
         break;
         case "api/comentario":
-        crearComentario(data);
         $('textarea').val("");
         $('label').css('color','#ddd');
         break;

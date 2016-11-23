@@ -17,7 +17,7 @@
       <td>
         <div class="row">
           {foreach from=$turno['imagenesturno'] key=index item=imagen}
-          <div class="col-xs-6 col-md-3">
+          <div class="col-md-3 col-xs-6">
             <a href="{$imagen['path']}" class="thumbnail">
               <img data-u="image" src="{$imagen['path']}" alt="TurnoImagen_{$turno['cliente']}_{$imagen['fk_id_turno']}"  class="thumbnail img-rounded" >
             </a>

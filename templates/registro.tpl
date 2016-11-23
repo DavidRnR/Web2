@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-4 col-md-offset-4 col-xs-4 col-md-offset-4">
   <form class="form-signin registro" href="index.php?action=nuevo_usuario" method="post" enctype="multipart/form-data">
     <h2 class="form-signin-heading">Registrarse</h2>
 

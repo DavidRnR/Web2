@@ -30,7 +30,8 @@ private $smarty;
     $this->smarty->display('adminPaquetes.tpl');
   }
 
-  function mostrarUsuarios ($usuarios) {
+  function mostrarUsuarios ($usuarios,$adminActivo) {
+    $this->smarty->assign('adminActivo',$adminActivo);
     $this->smarty->assign('usuarios',$usuarios);
     $this->smarty->display('adminUsuarios.tpl');
   }
