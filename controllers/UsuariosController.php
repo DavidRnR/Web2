@@ -15,7 +15,7 @@ class UsuariosController
 
   public function login(){
     if(!isset($_POST['usuario']) && !isset($_POST["password"]))
-    $this->vista->mostrar([]);
+    $this->vista->mostrar();
     else {
       $user = $_POST['usuario'];
       $pass = $_POST['password'];
